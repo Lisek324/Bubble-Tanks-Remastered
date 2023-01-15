@@ -7,12 +7,6 @@ public class AudioManager : MonoBehaviour
     public AudioLowPassFilter filter;
     public AudioSource audioSource;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (PauseMenu.isPaused)

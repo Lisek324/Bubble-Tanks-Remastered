@@ -12,8 +12,14 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused) Resume();
-            else Pause();
+            if (!TankBuilder.isInEditMode) 
+            {
+                Pause();
+            }
+            else
+            {
+                if (isPaused) Resume();
+            }
         }
     }
 
