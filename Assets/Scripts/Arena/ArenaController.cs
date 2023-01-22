@@ -21,7 +21,7 @@ public class ArenaController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            player.transform.SetParent(transform);
+            //player.transform.SetParent(transform);
             for (int i = 0; i < jumpPoints.Length; i++)
             {
                 jumpPoints[i].gameObject.SetActive(false);
