@@ -5,10 +5,15 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+
+    private HullScript hullClass;
+    public static int total;
+
     [Header("Collectible Variables")]
     public AudioSource collectSound;
     private int bubbles = 0;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI healthText;
 
     [Header("Player Components")]
     public GameObject player;
@@ -27,12 +32,20 @@ public class PlayerController : MonoBehaviour
     {
         horizontalDirection = GetInput().x;
         verticalDirection = GetInput().y;
+        GetHealth();
+    }
+
+    private void Start()
+    {
+       
+        
     }
     private void FixedUpdate()
     {
         MoveCharacter();
         ApplyLinearDrag();
         Rotation();
+        
     }
     private static Vector2 GetInput()
     {
@@ -79,5 +92,19 @@ public class PlayerController : MonoBehaviour
             collectSound.Play();
             scoreText.text = "Bubbles: " + bubbles;
         }
+    }
+
+    private void GetHealth() 
+    {
+        total = 0;
+        foreach (Transform child in player.transform)
+        {
+            if (child.CompareTag("Hull"))
+            {
+                hullClass = child.GetComponent<HullScript>();
+                total += hullClass.hullHealth;
+            }
+        }
+        healthText.text = "Health: " + total.ToString();
     }
 }

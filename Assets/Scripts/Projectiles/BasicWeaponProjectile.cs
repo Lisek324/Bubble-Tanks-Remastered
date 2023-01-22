@@ -18,4 +18,13 @@ public class BasicWeaponProjectile : ProjectileClass
         }
         Destroy(gameObject);
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Arena"))
+        {
+            //TO DO: you can still shoot thgrough arena tho
+            Destroy(gameObject);
+        }
+    }
 }

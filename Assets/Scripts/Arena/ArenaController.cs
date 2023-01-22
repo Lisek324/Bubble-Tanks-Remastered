@@ -14,6 +14,7 @@ public class ArenaController : MonoBehaviour
     public GameObject[] numberOfEnemiesTemp;
     private void Start()
     {
+
         numberOfEnemiesTemp = GameObject.FindGameObjectsWithTag("Enemy");
         player = GameObject.Find("Player");
     }
@@ -26,7 +27,9 @@ public class ArenaController : MonoBehaviour
             {
                 jumpPoints[i].gameObject.SetActive(false);
             }
+            
         }
+       
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

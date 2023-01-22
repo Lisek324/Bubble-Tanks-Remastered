@@ -11,6 +11,8 @@ TagManager:
   - ArenaSpawnCollider
   - WorldBorder
   - JumpPoint
+  - Hull
+  - Bullet
   layers:
   - Default
   - TransparentFX
