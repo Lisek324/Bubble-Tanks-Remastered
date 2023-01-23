@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicWeaponProjectile : ProjectileClass
+public class PlayerSmallProjectile : ProjectileClass
 { 
 
     private void Start()
     {
-        ignorePlayerCollision();
+        IgnorePlayerCollision();
+        BulletSpeed();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out Enemy enemyComponent))
         {
-            enemyComponent.TakeDamage(damage);
+            enemyComponent.TakeDamage(getDamage);
         }
         Destroy(gameObject);
     }
@@ -27,4 +28,5 @@ public class BasicWeaponProjectile : ProjectileClass
             Destroy(gameObject);
         }
     }
+
 }

@@ -10,14 +10,14 @@ public class BasicWeapon : WeaponClass
     }
     private void instantiateProjectile()
     {
-        Instantiate(projectilePrefab, launchOffset.position, transform.rotation);
-        shootSound.Play();
+        Instantiate(getProjectilePrefab, getLaunchOffset.position, transform.rotation);
+        getShootSound.Play();
     }
     private void Shoot()
     {
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+        if (Input.GetButtonDown("Fire1") && Time.time > getNextFire)
         {
-            nextFire = Time.time + fireRate;
+            setNextFire = Time.time + fireRate;
             InvokeRepeating("instantiateProjectile", 0.05f, fireRate);
         }
         else if (Input.GetButtonUp("Fire1"))
@@ -25,4 +25,6 @@ public class BasicWeapon : WeaponClass
             CancelInvoke("instantiateProjectile");
         }
     }
+
+
 }

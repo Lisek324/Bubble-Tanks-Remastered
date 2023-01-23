@@ -36,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, 0, -rotationSpeed * Time.deltaTime)); //transform.Rotate(transform.up * Time.deltaTime * -rotationSpeed);
         }
-        rb.AddForce(transform.up * movementSpeed * Time.deltaTime);
+        rb.AddForce(transform.right * movementSpeed * Time.deltaTime);
     }
     IEnumerator Wander()
     {

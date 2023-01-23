@@ -6,10 +6,36 @@ using UnityEngine;
 public class WeaponClass : MonoBehaviour
 {
     [SerializeField] protected float fireRate;
-    protected static float nextFire = 0f;
+    private float nextFire = 0f;
 
-    [SerializeField] protected Transform launchOffset;
-    [SerializeField] protected ProjectileClass projectilePrefab;
-    [SerializeField] protected AudioSource shootSound;
+    [SerializeField] private Transform launchOffset;
+    [SerializeField] private ProjectileClass projectilePrefab;
+    [SerializeField] private AudioSource shootSound;
+
+    [SerializeField]
+    public ProjectileClass getProjectilePrefab
+    {
+        get { return projectilePrefab; }
+    }
+
+    public Transform getLaunchOffset
+    {
+        get { return launchOffset; }
+    }
+
+    public AudioSource getShootSound
+    {
+        get { return shootSound; }
+    }
+
+    public float getNextFire
+    {
+        get { return nextFire; }
+    }
+
+    public float setNextFire
+    {
+        set {  nextFire = value; }
+    }
 
 }

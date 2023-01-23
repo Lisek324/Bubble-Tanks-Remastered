@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
 {
 
     private HullScript hullClass;
-    public static int total;
+    public static int maxHealth;
+    public static int currentHealth;
 
     [Header("Collectible Variables")]
     public AudioSource collectSound;
@@ -32,13 +33,12 @@ public class PlayerController : MonoBehaviour
     {
         horizontalDirection = GetInput().x;
         verticalDirection = GetInput().y;
-        GetHealth();
+        
     }
 
     private void Start()
     {
-       
-        
+        GetHealth();
     }
     private void FixedUpdate()
     {
@@ -96,15 +96,16 @@ public class PlayerController : MonoBehaviour
 
     private void GetHealth() 
     {
-        total = 0;
+        maxHealth = 0;
         foreach (Transform child in player.transform)
         {
             if (child.CompareTag("Hull"))
             {
                 hullClass = child.GetComponent<HullScript>();
-                total += hullClass.hullHealth;
+                maxHealth += hullClass.hullHealth;
             }
         }
-        healthText.text = "Health: " + total.ToString();
+        currentHealth = maxHealth;
+        healthText.text = "Health: " + currentHealth.ToString();
     }
 }
