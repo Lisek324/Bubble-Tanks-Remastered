@@ -7,8 +7,8 @@ public class EnemySmallProjectile : ProjectileClass
 
     private void Start()
     {
-        IgnoreEnemyCollision();
         BulletSpeed();
+        IgnoreEnemyCollision();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,7 +23,7 @@ public class EnemySmallProjectile : ProjectileClass
     {
         if (collision.CompareTag("Arena"))
         {
-            //TO DO: you can still shoot thgrough arena tho
+            //TO DO: it can still shoot thgrough arena
             Destroy(gameObject);
         }
     }

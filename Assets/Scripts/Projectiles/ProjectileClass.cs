@@ -16,8 +16,11 @@ public class ProjectileClass : MonoBehaviour
 
     protected void IgnoreEnemyCollision()
     {
-        GameObject enemy= GameObject.FindGameObjectWithTag("Enemy");
-        Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        GameObject[] enemy = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < enemy.Length; i++)
+        {
+            Physics2D.IgnoreCollision(enemy[i].GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
     }
 
     protected void BulletSpeed()

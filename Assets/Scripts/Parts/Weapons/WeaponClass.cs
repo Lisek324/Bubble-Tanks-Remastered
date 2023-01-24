@@ -6,36 +6,55 @@ using UnityEngine;
 public class WeaponClass : MonoBehaviour
 {
     [SerializeField] protected float fireRate;
-    private float nextFire = 0f;
 
+    private float nextFire = 0f;
     [SerializeField] private Transform launchOffset;
     [SerializeField] private ProjectileClass projectilePrefab;
     [SerializeField] private AudioSource shootSound;
+    [SerializeField] private Transform target;
 
-    [SerializeField]
-    public ProjectileClass getProjectilePrefab
+    private void Start()
     {
-        get { return projectilePrefab; }
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
+    protected virtual void EnemyRotateGun()
+    {
+        Vector2 direction = target.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
     }
 
-    public Transform getLaunchOffset
+    protected void InstantiateProjectile()
     {
-        get { return launchOffset; }
+        Instantiate(projectilePrefab, launchOffset.position, transform.rotation);
+        if(shootSound != null)
+        {
+            shootSound.Play();
+        }
+        
     }
 
-    public AudioSource getShootSound
+    protected virtual void EnemyShooting()
     {
-        get { return shootSound; }
+        if (Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Invoke("InstantiateProjectile", 0.05f);
+        }
     }
 
-    public float getNextFire
+    protected virtual float PlayerShooting(float nextFire)
     {
-        get { return nextFire; }
+        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            InvokeRepeating("InstantiateProjectile", 0.05f, fireRate);
+        }
+        else if (Input.GetButtonUp("Fire1"))
+        {
+            CancelInvoke("InstantiateProjectile");
+        }
+        return nextFire;
     }
-
-    public float setNextFire
-    {
-        set {  nextFire = value; }
-    }
-
 }

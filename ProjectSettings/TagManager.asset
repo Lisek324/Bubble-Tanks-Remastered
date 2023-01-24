@@ -50,3 +50,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2960389643
+    locked: 0
+  - name: Arena
+    uniqueID: 1491807565
+    locked: 0
+  - name: Object
+    uniqueID: 2313551589
+    locked: 0

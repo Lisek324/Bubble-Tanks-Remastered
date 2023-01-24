@@ -4,30 +4,19 @@ using UnityEngine;
 
 public class EnemyBasicWeapon : WeaponClass
 {
-    public Transform target;
-
     void Update()
     {
-        RotateGun();
-        Shoot();
+        EnemyRotateGun();
+        EnemyShooting();
     }
-    private void RotateGun()
+    protected override void EnemyRotateGun()
     {
-        Vector2 direction = target.position - transform.position;
-        direction.Normalize();
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        base.EnemyRotateGun();
     }
-    private void InstantiateProjectile()
+
+
+    protected override void EnemyShooting()
     {
-        Instantiate(getProjectilePrefab, getLaunchOffset.position, transform.rotation);
-    }
-    private void Shoot()
-    {
-        if (Time.time > getNextFire)
-        {
-            setNextFire = Time.time + fireRate;
-            Invoke("InstantiateProjectile",0.05f);
-        }   
+        base.EnemyShooting();
     }
 }
