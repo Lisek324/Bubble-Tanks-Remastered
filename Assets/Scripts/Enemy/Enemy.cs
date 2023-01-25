@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class Enemy : EntityClass
 {
-    [SerializeField] private int health, maxHealth = 3;
+    [SerializeField]private int currentHealth;
     public GameObject[] bubbleDrop;
-
+    Transform enemy;
     void Start()
     {
-        health = maxHealth;
+        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
+        currentHealth = GetHealth(enemy);
+    }
+
+    protected override int GetHealth(Transform entity)
+    {
+        return base.GetHealth(entity);
     }
 
     public void TakeDamage(int damageAmmount) 
     { 
-        health = health - damageAmmount;
-        if(health <= 0)
+        currentHealth = currentHealth - damageAmmount;
+        if(currentHealth == 0 || currentHealth < 0)
         {
             Destroy(gameObject);
-            for (int i= 0;i<bubbleDrop.Length; i++)
+            for (int i = 0; i < bubbleDrop.Length; i++)
             {
-                Instantiate(bubbleDrop[i], transform.position + new Vector3(0,1,0), Quaternion.identity);
+                Instantiate(bubbleDrop[i], transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             }
         }
     }

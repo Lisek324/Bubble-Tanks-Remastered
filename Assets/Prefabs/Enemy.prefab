@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1840513618588724749}
   - component: {fileID: 218915282796360871}
+  - component: {fileID: 6922248047271728775}
   m_Layer: 0
   m_Name: BubbleSmall
-  m_TagString: Untagged
+  m_TagString: Hull
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +85,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6922248047271728775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531286571275346373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22250deca46cfe9489cc58ae8002eac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partName: 
+  partHealth: 1
 --- !u!1 &1551860608953870779
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,9 +109,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3464629721167126019}
   - component: {fileID: 6895871256726205475}
+  - component: {fileID: 6727887643764783278}
   m_Layer: 0
   m_Name: BubbleSmall
-  m_TagString: Untagged
+  m_TagString: Hull
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,6 +184,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6727887643764783278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551860608953870779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22250deca46cfe9489cc58ae8002eac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partName: 
+  partHealth: 1
 --- !u!1 &1887762233923096267
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,8 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60fef5bea185c1641af10f1ba533f634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 3
+  currentHealth: 0
   bubbleDrop:
   - {fileID: 4047600005300411362, guid: f78cc2a19cfe2254e881ef86baa2f082, type: 3}
   - {fileID: 4047600005300411362, guid: f78cc2a19cfe2254e881ef86baa2f082, type: 3}
@@ -290,9 +319,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6237005435862008361}
   - component: {fileID: 2705184309241585094}
+  - component: {fileID: 3208993654842679914}
   m_Layer: 0
   m_Name: BubbleMedium
-  m_TagString: Untagged
+  m_TagString: Hull
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,6 +394,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3208993654842679914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4971814299616479878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22250deca46cfe9489cc58ae8002eac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partName: 
+  partHealth: 2
 --- !u!1 &5495761954493161208
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,9 +418,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1933438624513240780}
   - component: {fileID: 251289396366905558}
+  - component: {fileID: 7470947642383963909}
   m_Layer: 0
   m_Name: BubbleLarge
-  m_TagString: Untagged
+  m_TagString: Hull
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -448,6 +493,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7470947642383963909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5495761954493161208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22250deca46cfe9489cc58ae8002eac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partName: 
+  partHealth: 4
 --- !u!1 &8220876843333686301
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,9 +517,10 @@ GameObject:
   m_Component:
   - component: {fileID: 705402755608988766}
   - component: {fileID: 6822827400051911147}
+  - component: {fileID: 3874099575637558795}
   m_Layer: 0
   m_Name: BubbleMedium
-  m_TagString: Untagged
+  m_TagString: Hull
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -532,6 +592,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3874099575637558795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220876843333686301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22250deca46cfe9489cc58ae8002eac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partName: 
+  partHealth: 2
 --- !u!1 &8232942814134874512
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,9 +616,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6966717484815878857}
   - component: {fileID: 6630345595425850257}
+  - component: {fileID: 3434752316021990565}
   m_Layer: 0
   m_Name: BubbleSmall
-  m_TagString: Untagged
+  m_TagString: Hull
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -616,6 +691,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3434752316021990565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232942814134874512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22250deca46cfe9489cc58ae8002eac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partName: 
+  partHealth: 1
 --- !u!1 &8934455643519188941
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,9 +715,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4806765763441329483}
   - component: {fileID: 1118136618929713918}
+  - component: {fileID: 3355857422127727436}
   m_Layer: 0
   m_Name: BubbleSmall
-  m_TagString: Untagged
+  m_TagString: Hull
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -700,6 +790,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3355857422127727436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934455643519188941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22250deca46cfe9489cc58ae8002eac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partName: 
+  partHealth: 1
 --- !u!1001 &3687241984970583489
 PrefabInstance:
   m_ObjectHideFlags: 0

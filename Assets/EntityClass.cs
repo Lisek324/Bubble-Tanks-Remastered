@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EntityClass : MonoBehaviour
 {
+    private HullScript hullScript;
     private int health;
-
-    /*private void TakeDamage(int damageAmmount)
+    protected virtual int GetHealth(Transform entity)
     {
-        health = health - damageAmmount;
-        if (health <= 0)
+        health = 0;
+        foreach (Transform child in entity)
         {
-            Destroy(gameObject);
-            for (int i = 0; i < bubbleDrop.Length; i++)
+            if (child.CompareTag("Hull"))
             {
-                Instantiate(bubbleDrop[i], transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                hullScript = child.GetComponent<HullScript>();
+                health += hullScript.partHealth;
             }
         }
-    }*/
+            return health;
+    }
+
 }

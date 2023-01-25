@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : EntityClass
 {
+    //current health
+    private int health;
+    private int maxHealth;
 
-    private HullScript hullClass;
-    public static int maxHealth;
-    public static int currentHealth;
+    [SerializeField] private TextMeshProUGUI healthText;
 
     [Header("Collectible Variables")]
     public AudioSource collectSound;
     private int bubbles = 0;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI healthText;
+    
 
     [Header("Player Components")]
     public GameObject player;
@@ -33,12 +34,13 @@ public class PlayerController : MonoBehaviour
     {
         horizontalDirection = GetInput().x;
         verticalDirection = GetInput().y;
-        
     }
 
     private void Start()
     {
-        GetHealth();
+        health = GetHealth(transform);
+        maxHealth = health;
+        healthText.text = "Health: " + health;
     }
     private void FixedUpdate()
     {
@@ -88,24 +90,28 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("CollectBubble"))
         {
             Destroy(collision.gameObject);
-            bubbles++;
+            if (maxHealth == health)
+            {
+                bubbles++;
+            }
+            else
+            {
+                health++;
+            }
             collectSound.Play();
             scoreText.text = "Bubbles: " + bubbles;
+            healthText.text = "Health: " + health;
         }
     }
 
-    private void GetHealth() 
+    protected override int GetHealth(Transform entity)
     {
-        maxHealth = 0;
-        foreach (Transform child in player.transform)
-        {
-            if (child.CompareTag("Hull"))
-            {
-                hullClass = child.GetComponent<HullScript>();
-                maxHealth += hullClass.hullHealth;
-            }
-        }
-        currentHealth = maxHealth;
-        healthText.text = "Health: " + currentHealth.ToString();
+        return base.GetHealth(entity);
+    }
+
+    public void TakeDamage(int damageAmmount)
+    {
+        health = health - damageAmmount;
+        healthText.text = "Health: " + health;
     }
 }

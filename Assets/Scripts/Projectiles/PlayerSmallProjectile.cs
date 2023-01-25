@@ -10,9 +10,9 @@ public class PlayerSmallProjectile : ProjectileClass
         IgnorePlayerCollision();
         BulletSpeed();
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //TODO: GETING COMPONENT IS SLOOOOOW
         if (collision.gameObject.TryGetComponent(out Enemy enemyComponent))
         {
             enemyComponent.TakeDamage(getDamage);

@@ -98,4 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partName: Bubble
-  health: 2
+  partHealth: 2

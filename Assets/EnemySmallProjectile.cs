@@ -11,10 +11,10 @@ public class EnemySmallProjectile : ProjectileClass
         IgnoreEnemyCollision();
     }
     private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out PlayerController playerComponent))
+    {    
+        if (collision.gameObject.TryGetComponent(out PlayerController player))
         {
-            //playerComponent.
+            player.TakeDamage(getDamage);
         }
         Destroy(gameObject);
     }
