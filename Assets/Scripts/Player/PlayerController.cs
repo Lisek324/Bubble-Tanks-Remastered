@@ -13,7 +13,7 @@ public class PlayerController : EntityClass
 
     [Header("Collectible Variables")]
     public AudioSource collectSound;
-    private int bubbles = 0;
+    public static int bubbles = 0;
     [SerializeField] private TextMeshProUGUI scoreText;
     
 
