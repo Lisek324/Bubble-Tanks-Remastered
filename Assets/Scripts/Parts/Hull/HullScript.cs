@@ -6,7 +6,7 @@ using TMPro;
 
 public class HullScript : MonoBehaviour
 {
-    [SerializeField] private string partName;
+    [SerializeField] public string partName;
     [SerializeField] public int partHealth;
     [SerializeField] private int cost;
     public Sprite sprite;

@@ -5,10 +5,10 @@ using UnityEngine;
 public class Destroyer : MonoBehaviour
 {
     public int worldSize=1;
-    public GameObject borderLeft;
-    public GameObject borderUp;
-    public GameObject borderRight;
-    public GameObject borderDown;
+    private GameObject borderLeft;
+    private GameObject borderUp;
+    private GameObject borderRight;
+    private GameObject borderDown;
 
     private void Start()
     {

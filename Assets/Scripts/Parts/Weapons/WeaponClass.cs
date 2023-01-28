@@ -11,7 +11,7 @@ public class WeaponClass : MonoBehaviour
     [SerializeField] private Transform launchOffset;
     [SerializeField] private ProjectileClass projectilePrefab;
     [SerializeField] private AudioSource shootSound;
-    [SerializeField] private Transform target;
+    private Transform target;
 
     private void Start()
     {
@@ -32,7 +32,6 @@ public class WeaponClass : MonoBehaviour
         {
             shootSound.Play();
         }
-        
     }
 
     protected virtual void EnemyShooting()

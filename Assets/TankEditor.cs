@@ -7,23 +7,16 @@ public class TankEditor : MonoBehaviour
 {
     public GameObject player;
     public GameObject point;
-    public GameObject grid;
+    private GameObject init;
 
-    public Dragger dragger;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        player = GetComponent<GameObject>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    protected void BuyPart(HullScript hc)
-    {
-        
+        point = GameObject.Find("PlayerEdit");
+        player = GameObject.Find("Player");
+        foreach(Transform t in player.transform)
+        {
+            init = Instantiate(t.gameObject, point.transform) as GameObject;
+            init.AddComponent<Dragger>();
+        }
     }
 }
