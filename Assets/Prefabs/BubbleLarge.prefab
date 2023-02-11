@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -3324100195547250906}
   - component: {fileID: 2813987009826683601}
   - component: {fileID: 3009610645068424758}
+  - component: {fileID: 8321095323354426688}
   m_Layer: 0
   m_Name: BubbleLarge
   m_TagString: Hull
@@ -146,3 +147,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!58 &8321095323354426688
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578367057806114310}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.28

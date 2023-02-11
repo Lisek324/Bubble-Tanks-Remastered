@@ -5,8 +5,11 @@ using UnityEngine;
 public class Enemy : EntityClass
 {
     [SerializeField]private int currentHealth;
+    public float threat = 0f;
     public GameObject[] bubbleDrop;
     Transform enemy;
+    public bool isDead = false;
+
     void Start()
     {
         enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
@@ -21,8 +24,9 @@ public class Enemy : EntityClass
     public void TakeDamage(int damageAmmount) 
     { 
         currentHealth = currentHealth - damageAmmount;
-        if(currentHealth == 0 || currentHealth < 0)
+        if(currentHealth <= 0)
         {
+            isDead = true;
             Destroy(gameObject);
             for (int i = 0; i < bubbleDrop.Length; i++)
             {

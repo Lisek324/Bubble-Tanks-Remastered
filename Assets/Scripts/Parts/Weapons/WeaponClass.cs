@@ -7,7 +7,7 @@ public class WeaponClass : MonoBehaviour
 {
     [SerializeField] protected float fireRate;
 
-    private float nextFire = 0f;
+    protected float nextFire = 0f;
     [SerializeField] private Transform launchOffset;
     [SerializeField] private ProjectileClass projectilePrefab;
     [SerializeField] private AudioSource shootSound;
@@ -43,7 +43,7 @@ public class WeaponClass : MonoBehaviour
         }
     }
 
-    protected virtual float PlayerShooting(float nextFire)
+    protected virtual float PlayerShooting()
     {
         if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
         {
@@ -52,6 +52,7 @@ public class WeaponClass : MonoBehaviour
         }
         else if (Input.GetButtonUp("Fire1"))
         {
+            
             CancelInvoke("InstantiateProjectile");
         }
         return nextFire;

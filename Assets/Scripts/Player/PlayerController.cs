@@ -5,8 +5,7 @@ using TMPro;
 
 public class PlayerController : EntityClass
 {
-    //current health
-    private int health;
+    private int currentHealth;
     private int maxHealth;
 
     [SerializeField] private TextMeshProUGUI healthText;
@@ -38,9 +37,9 @@ public class PlayerController : EntityClass
 
     private void Start()
     {
-        health = GetHealth(transform);
-        maxHealth = health;
-        healthText.text = "Health: " + health;
+        maxHealth = GetHealth(transform);
+        currentHealth = maxHealth;
+        healthText.text = "Health: " + currentHealth;
     }
     private void FixedUpdate()
     {
@@ -90,17 +89,17 @@ public class PlayerController : EntityClass
         if (collision.gameObject.CompareTag("CollectBubble"))
         {
             Destroy(collision.gameObject);
-            if (maxHealth == health)
+            if (maxHealth == currentHealth)
             {
                 bubbles++;
             }
             else
             {
-                health++;
+                currentHealth++;
             }
             collectSound.Play();
             scoreText.text = "Bubbles: " + bubbles;
-            healthText.text = "Health: " + health;
+            healthText.text = "Health: " + currentHealth;
         }
     }
 
@@ -111,7 +110,7 @@ public class PlayerController : EntityClass
 
     public void TakeDamage(int damageAmmount)
     {
-        health = health - damageAmmount;
-        healthText.text = "Health: " + health;
+        currentHealth = currentHealth - damageAmmount;
+        healthText.text = "Health: " + currentHealth;
     }
 }

@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class EnemySmallProjectile : ProjectileClass
 {
-
-    private void Start()
+    public override void Start()
     {
-        BulletSpeed();
+        base.Start();
         IgnoreEnemyCollision();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {    
         if (collision.gameObject.TryGetComponent(out PlayerController player))
         {
-            player.TakeDamage(getDamage);
+            player.TakeDamage(damage);
         }
         Destroy(gameObject);
     }

@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSmallProjectile : ProjectileClass
-{ 
-
-    private void Start()
+{
+    public override void Start()
     {
+        base.Start();
         IgnorePlayerCollision();
-        BulletSpeed();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //TODO: GETING COMPONENT IS SLOOOOOW
         if (collision.gameObject.TryGetComponent(out Enemy enemyComponent))
         {
-            enemyComponent.TakeDamage(getDamage);
+            if(enemyComponent.isDead == false)
+            {
+                enemyComponent.TakeDamage(damage);
+            }
         }
+        damage = 0;
         Destroy(gameObject);
     }
 
@@ -28,5 +30,4 @@ public class PlayerSmallProjectile : ProjectileClass
             Destroy(gameObject);
         }
     }
-
 }

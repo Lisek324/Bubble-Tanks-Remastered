@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1840513618588724749}
   - component: {fileID: 218915282796360871}
   - component: {fileID: 6922248047271728775}
+  - component: {fileID: 5850891181844932460}
   m_Layer: 0
   m_Name: BubbleSmall
   m_TagString: Hull
@@ -99,6 +100,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partName: 
   partHealth: 1
+  cost: 0
+  sprite: {fileID: 0}
+--- !u!58 &5850891181844932460
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531286571275346373}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.32
 --- !u!1 &1551860608953870779
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,6 +129,7 @@ GameObject:
   - component: {fileID: 3464629721167126019}
   - component: {fileID: 6895871256726205475}
   - component: {fileID: 6727887643764783278}
+  - component: {fileID: 6472453837795316555}
   m_Layer: 0
   m_Name: BubbleSmall
   m_TagString: Hull
@@ -198,6 +218,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partName: 
   partHealth: 1
+  cost: 0
+  sprite: {fileID: 0}
+--- !u!58 &6472453837795316555
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551860608953870779}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.32
 --- !u!1 &1887762233923096267
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,10 +313,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  threat: 1
   bubbleDrop:
   - {fileID: 4047600005300411362, guid: f78cc2a19cfe2254e881ef86baa2f082, type: 3}
   - {fileID: 4047600005300411362, guid: f78cc2a19cfe2254e881ef86baa2f082, type: 3}
   - {fileID: 4047600005300411362, guid: f78cc2a19cfe2254e881ef86baa2f082, type: 3}
+  isDead: 0
 --- !u!114 &-7468217850669023343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +340,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887762233923096267}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -320,6 +360,7 @@ GameObject:
   - component: {fileID: 6237005435862008361}
   - component: {fileID: 2705184309241585094}
   - component: {fileID: 3208993654842679914}
+  - component: {fileID: 2668709448960386268}
   m_Layer: 0
   m_Name: BubbleMedium
   m_TagString: Hull
@@ -408,6 +449,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partName: 
   partHealth: 2
+  cost: 0
+  sprite: {fileID: 0}
+--- !u!58 &2668709448960386268
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4971814299616479878}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.64
 --- !u!1 &5495761954493161208
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +478,7 @@ GameObject:
   - component: {fileID: 1933438624513240780}
   - component: {fileID: 251289396366905558}
   - component: {fileID: 7470947642383963909}
+  - component: {fileID: 6872610607584558585}
   m_Layer: 0
   m_Name: BubbleLarge
   m_TagString: Hull
@@ -507,6 +567,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partName: 
   partHealth: 4
+  cost: 0
+  sprite: {fileID: 0}
+--- !u!58 &6872610607584558585
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5495761954493161208}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.28
 --- !u!1 &8220876843333686301
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +596,7 @@ GameObject:
   - component: {fileID: 705402755608988766}
   - component: {fileID: 6822827400051911147}
   - component: {fileID: 3874099575637558795}
+  - component: {fileID: 2445323482713604416}
   m_Layer: 0
   m_Name: BubbleMedium
   m_TagString: Hull
@@ -606,6 +685,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partName: 
   partHealth: 2
+  cost: 0
+  sprite: {fileID: 0}
+--- !u!58 &2445323482713604416
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220876843333686301}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.64
 --- !u!1 &8232942814134874512
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +714,7 @@ GameObject:
   - component: {fileID: 6966717484815878857}
   - component: {fileID: 6630345595425850257}
   - component: {fileID: 3434752316021990565}
+  - component: {fileID: 2569558015567583471}
   m_Layer: 0
   m_Name: BubbleSmall
   m_TagString: Hull
@@ -705,6 +803,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partName: 
   partHealth: 1
+  cost: 0
+  sprite: {fileID: 0}
+--- !u!58 &2569558015567583471
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232942814134874512}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.32
 --- !u!1 &8934455643519188941
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,6 +832,7 @@ GameObject:
   - component: {fileID: 4806765763441329483}
   - component: {fileID: 1118136618929713918}
   - component: {fileID: 3355857422127727436}
+  - component: {fileID: 7206689377069723220}
   m_Layer: 0
   m_Name: BubbleSmall
   m_TagString: Hull
@@ -804,6 +921,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partName: 
   partHealth: 1
+  cost: 0
+  sprite: {fileID: 0}
+--- !u!58 &7206689377069723220
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934455643519188941}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.32
 --- !u!1001 &3687241984970583489
 PrefabInstance:
   m_ObjectHideFlags: 0

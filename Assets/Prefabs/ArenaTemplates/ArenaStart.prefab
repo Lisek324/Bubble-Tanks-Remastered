@@ -93,16 +93,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  isInJumpingState: 0
-  speed: 1.5
   jumpPoints:
   - {fileID: 2358640421283498130}
   - {fileID: 3631987202167134296}
   - {fileID: 8108709808053426675}
   - {fileID: 4020869289100958587}
-  numberOfEnemies:
-  - {fileID: 1887762233923096267, guid: da338fd5f760419419663fe9912462e3, type: 3}
-  numberOfEnemiesTemp: []
+  numberOfEnemies: 0
+  isSpawned: 1
+  isArenaCleared: 1
+  gameDifficultyTreshold: 1
+  gameDifficulty: 0
 --- !u!50 &1078556548511986133
 Rigidbody2D:
   serializedVersion: 4

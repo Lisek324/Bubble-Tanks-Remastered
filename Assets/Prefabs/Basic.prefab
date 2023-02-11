@@ -186,7 +186,6 @@ MonoBehaviour:
   launchOffset: {fileID: 2775289990992718998}
   projectilePrefab: {fileID: 8632663249236768522, guid: 6f32fbfdf7288d944b3cccde0be03b99, type: 3}
   shootSound: {fileID: 547196266}
-  target: {fileID: 0}
 --- !u!222 &4103733003867883060
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -263,9 +262,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1981415707
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8846ca855cf2a9148819953be64d7fd0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

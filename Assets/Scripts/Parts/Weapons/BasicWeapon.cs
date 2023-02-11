@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class BasicWeapon : WeaponClass
 {
-    private float nextFire = 0f;
     void Update()
     {
-        nextFire = PlayerShooting(nextFire);
+        PlayerShooting();
     }
 
-    protected override float PlayerShooting(float nextFire)
+    protected override float PlayerShooting()
     {
-        return base.PlayerShooting(nextFire);
+        return base.PlayerShooting();
     }
 }
