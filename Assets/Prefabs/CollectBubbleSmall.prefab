@@ -244,7 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f56c4275c907e4493ab084e732a0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropForce: 50
+  dropForce: 75
+  worth: 1
 --- !u!96 &22215619791797546
 TrailRenderer:
   serializedVersion: 2

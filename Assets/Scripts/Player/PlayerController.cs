@@ -14,7 +14,7 @@ public class PlayerController : EntityClass
     public AudioSource collectSound;
     public static int bubbles = 0;
     [SerializeField] private TextMeshProUGUI scoreText;
-    
+    BubbleCollectForce bubbleCollect;
 
     [Header("Player Components")]
     public GameObject player;
@@ -88,14 +88,17 @@ public class PlayerController : EntityClass
     {
         if (collision.gameObject.CompareTag("CollectBubble"))
         {
+            bubbleCollect = collision.gameObject.GetComponent<BubbleCollectForce>();
             Destroy(collision.gameObject);
             if (maxHealth == currentHealth)
             {
-                bubbles++;
+                bubbles += bubbleCollect.worth;
+                bubbleCollect.worth = 0;
             }
             else
             {
-                currentHealth++;
+                currentHealth+=bubbleCollect.worth;
+                bubbleCollect.worth = 0;
             }
             collectSound.Play();
             scoreText.text = "Bubbles: " + bubbles;

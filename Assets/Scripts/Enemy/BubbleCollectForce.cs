@@ -6,6 +6,7 @@ public class BubbleCollectForce : MonoBehaviour
 {
     private Rigidbody2D rib;
     public float dropForce = 5f;
+    public int worth = 0;
 
     void Start()
     {

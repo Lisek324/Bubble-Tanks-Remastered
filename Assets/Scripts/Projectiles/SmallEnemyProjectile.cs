@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySmallProjectile : ProjectileClass
+public class SmallEnemyProjectile : ProjectileClass
 {
     public override void Start()
     {
@@ -15,6 +15,7 @@ public class EnemySmallProjectile : ProjectileClass
         {
             player.TakeDamage(damage);
         }
+        damage = 0;
         Destroy(gameObject);
     }
 

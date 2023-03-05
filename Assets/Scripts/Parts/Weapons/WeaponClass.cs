@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class WeaponClass : MonoBehaviour
+public class WeaponClass : PartHandler
 {
+    [Header("Weapon variables")]
     [SerializeField] protected float fireRate;
 
     protected float nextFire = 0f;

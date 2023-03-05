@@ -7,16 +7,19 @@ public class ProjectileClass : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] protected int damage;
     [SerializeField] private Rigidbody2D bullet;
+    [SerializeField] private Vector2 scale;
 
     protected void IgnorePlayerCollision()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        
         foreach (Transform child in player.transform)
         {
             if (child.CompareTag("Hull"))
             {
                 Physics2D.IgnoreCollision(child.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             }
+            Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());//collider for jumps between arenas
         }
     }
 

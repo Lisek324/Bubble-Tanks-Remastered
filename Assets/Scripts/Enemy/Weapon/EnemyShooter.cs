@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBasicWeapon : WeaponClass
+public class EnemyShooter : WeaponClass
 {
     void Update()
     {

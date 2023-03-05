@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EntityClass : MonoBehaviour
 {
-    private HullScript hullScript;
+    private Hull hullScript;
     private int health;
     protected virtual int GetHealth(Transform entity)
     {
@@ -14,7 +14,7 @@ public class EntityClass : MonoBehaviour
         {
             if (child.CompareTag("Hull"))
             {
-                hullScript = child.GetComponent<HullScript>();
+                hullScript = child.GetComponent<Hull>();
                 health += hullScript.partHealth;
             }
         }

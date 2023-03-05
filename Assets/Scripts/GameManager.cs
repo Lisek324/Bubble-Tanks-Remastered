@@ -6,8 +6,8 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] public List<GameObject> enemyList;
-    public float gameDifficultyTreshold = 1f;
-    public float gameDifficulty = 0f;
+    public int gameDifficultyTreshold = 1;
+    public int gameDifficulty = 0;
     private void Start()
     { 
         Application.targetFrameRate = 144;

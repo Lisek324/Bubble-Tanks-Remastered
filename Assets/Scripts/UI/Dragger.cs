@@ -10,7 +10,7 @@ public class Dragger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
     Transform builder;
     public void Start()
     {
-        builder = GameObject.Find("TankBuilder").GetComponent<Transform>();
+        builder = GameObject.Find("PlayerEdit").GetComponent<Transform>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSmallProjectile : ProjectileClass
+public class PlayerProjectileScript : ProjectileClass
 {
     public override void Start()
     {

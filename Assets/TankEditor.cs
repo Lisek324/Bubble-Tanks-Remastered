@@ -13,10 +13,22 @@ public class TankEditor : MonoBehaviour
     {
         point = GameObject.Find("PlayerEdit");
         player = GameObject.Find("Player");
-        foreach(Transform t in player.transform)
+        /*foreach(Transform t in player.transform)
         {
             init = Instantiate(t.gameObject, point.transform) as GameObject;
             init.AddComponent<Dragger>();
+        }*/
+    }
+
+    public void Save()
+    {
+        foreach (Transform child in player.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in point.transform)
+        {
+            Instantiate(child.gameObject, player.transform.position+child.transform.position, Quaternion.identity).transform.SetParent(player.transform);
         }
     }
 }
