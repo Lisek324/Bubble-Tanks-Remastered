@@ -9,9 +9,10 @@ public class ArenaController : MonoBehaviour
     public Transform[] jumpPoints;
     private GameObject[] jumpPointsTemp;
     private GameObject[] enemies;
+    private Enemy enemy;
     private List<Transform> bubblesToCollect = new List<Transform>();
     //private GameObject[] bubblesToCollect;
-    public Transform currentArena;
+    //public Transform currentArena;
 
     private GameManager gameManager;
     int index = 0;
@@ -21,20 +22,27 @@ public class ArenaController : MonoBehaviour
 
     private void Start()
     {
-        
         gameManager = GameObject.Find("MainCamera").GetComponent<GameManager>();
         player = GameObject.Find("Player");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        currentArena = transform;
+        //currentArena = transform;
         if (collision.CompareTag("Player"))
         {
-            //player.transform.SetParent(transform);
+            collision.transform.SetParent(transform);
+            ///jumpPoints cannot be active while player is inside that arema
             for (int i = 0; i < jumpPoints.Length; i++)
             {
                 jumpPoints[i].gameObject.SetActive(false);
+            }
+            ///upon reentering arena, enemies are activated again
+            foreach(Transform child in transform)
+            {
+                if (child.CompareTag("Enemy"))
+                {
+                    child.gameObject.SetActive(true);
+                }
             }
            
             if (isSpawned == false)
@@ -70,16 +78,31 @@ public class ArenaController : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.CompareTag("Enemy") && isSpawned && collision.gameObject.activeSelf == true)
+        {
+            enemy = collision.gameObject.GetComponent<Enemy>();
+            enemy.TakeDamage(int.MaxValue);
+            Debug.Log("DESTROYED");
+        }
         if (collision.CompareTag("Player"))
         {
-            player.transform.position = new Vector3(GetClosestJumpPoint().transform.position.x, GetClosestJumpPoint().transform.position.y);
+            collision.transform.position = new Vector3(GetClosestJumpPoint().transform.position.x, GetClosestJumpPoint().transform.position.y);
 
             for (int i = 0; i < jumpPoints.Length; i++)
             {
                 jumpPoints[i].gameObject.SetActive(true);
             }
-           
+
+            ///upon leaving arena, enemies will be deactivated
+            foreach (Transform child in transform)
+            {
+                if (child.CompareTag("Enemy"))
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
         }
+        
     }
 
 
@@ -107,7 +130,7 @@ public class ArenaController : MonoBehaviour
             {
                 if (bubblesToCollect[i] != null)
                 {
-                    bubblesToCollect[i].transform.position = Vector3.MoveTowards(bubblesToCollect[i].transform.position, player.transform.position, 0.5f);
+                    bubblesToCollect[i].transform.position = Vector3.MoveTowards(bubblesToCollect[i].transform.position, player.transform.position, 0.05f);
                 }
                 else
                 {
@@ -146,7 +169,7 @@ public class ArenaController : MonoBehaviour
                 numberOfEnemies +=1;
             }
         }
-        //TODO: There must be bettwer way to check after a frame the ammount of enemies in arena
+        //TODO: There must be better way to check after a frame the ammount of enemies in arena
         //possible solution: get current position(arena) of a player then after frame check the number
         return numberOfEnemies;
     }

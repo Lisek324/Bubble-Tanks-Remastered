@@ -7,16 +7,29 @@ public class Enemy : EntityClass
     [SerializeField] private int currentHealth;
     public int threat = 0;
     public GameObject[] bubbleDrop;
-    Transform enemy;
+    //Transform enemy;
+    GameObject player;
     GameObject destroyedEnemy;
     public bool isDead = false;
-    ArenaController a;
+    //ArenaController a;
 
     void Start()
     {
-        a = gameObject.AddComponent<ArenaController>();
-        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
-        currentHealth = GetHealth(enemy);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        ///for every enemy hull collider, ignore with player trigger collider
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("Hull"))
+            {
+                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), child.GetComponent<Collider2D>());
+            }
+        }
+
+        //a = gameObject.AddComponent<ArenaController>();
+        currentHealth = GetHealth(transform);
+        ///ignore player trigger collider with enemy trigger collider
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        
     }
 
     protected override int GetHealth(Transform entity)

@@ -28,7 +28,6 @@ public class PlayerController : EntityClass
     private float verticalDirection;
     private bool changingDirectionX => (rb.velocity.x > 0f && horizontalDirection < 0f || (rb.velocity.x < 0f && horizontalDirection > 0));
     private bool changingDirectionY => (rb.velocity.y > 0f && verticalDirection < 0f || (rb.velocity.y < 0f && verticalDirection > 0));
-
     void Update()
     {
         horizontalDirection = GetInput().x;
@@ -37,6 +36,7 @@ public class PlayerController : EntityClass
 
     private void Start()
     {
+        
         maxHealth = GetHealth(transform);
         currentHealth = maxHealth;
         healthText.text = "Health: " + currentHealth;
