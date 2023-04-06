@@ -66,13 +66,13 @@ public class PlayerController : EntityClass
     }
     private void ApplyLinearDrag()
     {
-        if (Mathf.Abs(horizontalDirection) < 0.4f && Mathf.Abs(verticalDirection) < 0.4f || changingDirectionX || changingDirectionY)
+        if (Mathf.Abs(horizontalDirection) < 0.3f && Mathf.Abs(verticalDirection) < 0.3f || changingDirectionX || changingDirectionY)
         {
             rb.drag = linearDrag;
         }
         else
         {
-            rb.drag = 0f;
+            rb.drag = 0.7f;
         }
     }
 

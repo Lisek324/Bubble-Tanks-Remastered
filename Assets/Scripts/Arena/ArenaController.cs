@@ -11,8 +11,7 @@ public class ArenaController : MonoBehaviour
     private GameObject[] enemies;
     private Enemy enemy;
     private List<Transform> bubblesToCollect = new List<Transform>();
-    //private GameObject[] bubblesToCollect;
-    //public Transform currentArena;
+
 
     private GameManager gameManager;
     int index = 0;
@@ -27,11 +26,10 @@ public class ArenaController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //currentArena = transform;
         if (collision.CompareTag("Player"))
         {
             collision.transform.SetParent(transform);
-            ///jumpPoints cannot be active while player is inside that arema
+            ///jumpPoints cannot be active while player is inside that arena
             for (int i = 0; i < jumpPoints.Length; i++)
             {
                 jumpPoints[i].gameObject.SetActive(false);
@@ -65,7 +63,6 @@ public class ArenaController : MonoBehaviour
                             break;
                         }
                     }
-                    
                     gameManager.gameDifficulty += enemyThreat;
                     var e = Instantiate(gameManager.enemyList[index].gameObject, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                     e.transform.parent = gameObject.transform;          
@@ -81,8 +78,8 @@ public class ArenaController : MonoBehaviour
         if (collision.CompareTag("Enemy") && isSpawned && collision.gameObject.activeSelf == true)
         {
             enemy = collision.gameObject.GetComponent<Enemy>();
+            ///Makes sure that enemies won't breathe in vacuum of space
             enemy.TakeDamage(int.MaxValue);
-            Debug.Log("DESTROYED");
         }
         if (collision.CompareTag("Player"))
         {
@@ -104,8 +101,6 @@ public class ArenaController : MonoBehaviour
         }
         
     }
-
-
     private void Update()
     {
 

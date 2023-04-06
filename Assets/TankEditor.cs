@@ -22,13 +22,29 @@ public class TankEditor : MonoBehaviour
 
     public void Save()
     {
+        //destroy every part
         foreach (Transform child in player.transform)
         {
             Destroy(child.gameObject);
         }
+        //rebuild here
         foreach (Transform child in point.transform)
         {
-            Instantiate(child.gameObject, player.transform.position+child.transform.position, Quaternion.identity).transform.SetParent(player.transform);
+            Debug.Log(child.gameObject.name.ToString());
+            GameObject myGameObject;
+            //GameObject myGameObject = Instantiate(Resources.Load(@"Prefabs\"+child.gameObject.name.ToString(), typeof(GameObject)), child.transform.localPosition + player.transform.position, Quaternion.identity) as GameObject;
+            Debug.Log(child.name.Length - 7);
+            if(child.gameObject.tag == "Hull")
+            {
+                myGameObject = Instantiate(Resources.Load(@"Prefabs\Hull\" + child.gameObject.name.Substring(0, child.gameObject.name.Length - 7), typeof(GameObject)), child.transform.localPosition + player.transform.position, Quaternion.identity) as GameObject;
+                myGameObject.transform.SetParent(player.transform);
+            }
+            else
+            {
+                myGameObject = Instantiate(Resources.Load(@"Prefabs\Weapons\Player\" + child.gameObject.name.Substring(0, child.gameObject.name.Length - 7), typeof(GameObject)), child.transform.localPosition + player.transform.position, Quaternion.identity) as GameObject;
+                myGameObject.transform.SetParent(player.transform);
+            }
+            Camera.main.ScreenToViewportPoint(myGameObject.transform.position);
         }
     }
 }
