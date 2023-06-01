@@ -4,30 +4,49 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Dragger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerDownHandler, IInitializePotentialDragHandler
+public class Dragger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IInitializePotentialDragHandler
 {
-    GameObject dragger;
+    public static GameObject dragger;
+    GameObject partInventory;
     Transform tb;
     Transform builder;
-    string originalName = "";
-    public GameObject player;
+    private Slider rotationSlider;
+    private Slider scaleSlider;
+
     public void Start()
     {
+        rotationSlider = GameObject.Find("RotationSlider").GetComponent<Slider>();
+        scaleSlider = GameObject.Find("ScaleSlider").GetComponent<Slider>();
+
         builder = GameObject.Find("PlayerEdit").GetComponent<Transform>();
-        player = GameObject.FindGameObjectWithTag("Player");
+
         tb = GameObject.Find("HUD").GetComponent<Transform>();
+        partInventory = GameObject.Find("ConstructionZone");
+
+        scaleSlider.onValueChanged.AddListener(delegate
+        {
+            Scale();
+        });
+
+        rotationSlider.onValueChanged.AddListener(delegate {
+            Rotate();
+        });
+
+       
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (gameObject.transform.parent.name == "Background")
+        if (gameObject.transform.parent.name == "BasePage")
         {
             dragger = Instantiate(gameObject, transform);
         }
         else
         {
             dragger = gameObject;
+            rotationSlider.value = dragger.transform.eulerAngles.z / 360;
+            //scaleSlider.value = dragger.transform.localScale.magnitude;
         }
-        originalName = dragger.gameObject.name;
+        dragger.transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -37,43 +56,28 @@ public class Dragger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        
-        dragger.transform.SetAsLastSibling();
-        dragger.transform.SetParent(builder);
-        
-        /*var a = Instantiate(gameObject, new Vector3(player.transform.position.x +dragger.transform.position.x, player.transform.position.y+ dragger.transform.position.y), Quaternion.identity);
-        a.transform.SetParent(player.transform);
-        var x = new Vector2(player.transform.position.x, player.transform.position.y);
-        //RectTransformUtility.ScreenPointToLocalPointInRectangle(a.GetComponent<RectTransform>(), tb.GetComponent<RectTransform>().transform.position, null, out x);
-        Camera.main.ScreenToViewportPoint(a.transform.position);*/
-
-        //var a = Instantiate(gameObject, new Vector3((tb.transform.position.x / dragger.transform.position.x), (tb.transform.position.y / dragger.transform.position.y)), Quaternion.identity);
-        //RectTransformUtility.ScreenPointToLocalPointInRectangle(a.GetComponent<RectTransform>(), tb.GetComponent<RectTransform>().transform.position+dragger.transform.position, null, out x);
-
-        //Debug.Log(Camera.main.ScreenToViewportPoint(a.transform.position).ToString());
-
-        /*var a = Instantiate(gameObject, dragger.transform.localPosition+player.transform.position, Quaternion.identity);
-
-        a.transform.SetParent(player.transform);
-        var x = new Vector2(player.transform.position.x, player.transform.position.y);
-        
-        Camera.main.ScreenToViewportPoint(a.transform.position);*/
-        
+        if (RectTransformUtility.RectangleContainsScreenPoint((RectTransform)partInventory.transform, dragger.transform.position))
+        {
+            dragger.transform.SetParent(builder);
+        }
+        else
+        {
+            Destroy(dragger.gameObject);
+        }
     }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        /*foreach (Transform child in player.transform)
-         {
-             Destroy(child.gameObject);
-         }*/
-
-        Debug.Log(originalName);
-
-    }
-
     public void OnInitializePotentialDrag(PointerEventData eventData)
     {
-        //eventData.useDragThreshold = false;
+
+        eventData.useDragThreshold = false;
+    }
+
+    public void Rotate()
+    {
+        dragger.transform.eulerAngles = Vector3.forward* rotationSlider.value*360;
+    }
+
+    public void Scale()
+    {
+        dragger.transform.localScale = new Vector3(scaleSlider.value, scaleSlider.value, scaleSlider.value);
     }
 }

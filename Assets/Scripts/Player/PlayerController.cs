@@ -5,9 +5,10 @@ using TMPro;
 
 public class PlayerController : EntityClass
 {
-    private int currentHealth;
-    private int maxHealth;
+    public int currentHealth;
+    public int maxHealth;
 
+    public static PlayerController playerController;
     [SerializeField] private TextMeshProUGUI healthText;
 
     [Header("Collectible Variables")]
@@ -17,8 +18,8 @@ public class PlayerController : EntityClass
     BubbleCollectForce bubbleCollect;
 
     [Header("Player Components")]
-    public GameObject player;
-    [SerializeField] private Rigidbody2D rb;
+    public static GameObject player;
+    [SerializeField] public Rigidbody2D rb;
 
     [Header("Movement Variables")]
     [SerializeField] public float maxSpeed;
@@ -36,10 +37,9 @@ public class PlayerController : EntityClass
 
     private void Start()
     {
-        
-        maxHealth = GetHealth(transform);
-        currentHealth = maxHealth;
-        healthText.text = "Health: " + currentHealth;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerController = player.GetComponent<PlayerController>();
+        SetHealth();
     }
     private void FixedUpdate()
     {
@@ -104,6 +104,13 @@ public class PlayerController : EntityClass
             scoreText.text = "Bubbles: " + bubbles;
             healthText.text = "Health: " + currentHealth;
         }
+    }
+
+    public void SetHealth()
+    {
+        maxHealth = GetHealth(transform);
+        currentHealth = maxHealth;
+        healthText.text = "Health: " + currentHealth;
     }
 
     protected override int GetHealth(Transform entity)

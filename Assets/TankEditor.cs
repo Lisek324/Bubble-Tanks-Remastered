@@ -7,44 +7,41 @@ public class TankEditor : MonoBehaviour
 {
     public GameObject player;
     public GameObject point;
-    private GameObject init;
+    public Canvas canvas;
+    public PlayerController playerController;
+    public GameObject myGameObject;
 
     private void Start()
     {
         point = GameObject.Find("PlayerEdit");
         player = GameObject.Find("Player");
-        /*foreach(Transform t in player.transform)
-        {
-            init = Instantiate(t.gameObject, point.transform) as GameObject;
-            init.AddComponent<Dragger>();
-        }*/
+        playerController = player.GetComponent<PlayerController>();
     }
 
     public void Save()
     {
-        //destroy every part
+        ///snaps back player rotation to x axis to preven missaligment after rebuild
+        player.transform.rotation = Quaternion.identity;
+
+        ///destroy every part
         foreach (Transform child in player.transform)
         {
             Destroy(child.gameObject);
         }
-        //rebuild here
+        ///rebuild here
         foreach (Transform child in point.transform)
         {
-            Debug.Log(child.gameObject.name.ToString());
-            GameObject myGameObject;
-            //GameObject myGameObject = Instantiate(Resources.Load(@"Prefabs\"+child.gameObject.name.ToString(), typeof(GameObject)), child.transform.localPosition + player.transform.position, Quaternion.identity) as GameObject;
-            Debug.Log(child.name.Length - 7);
-            if(child.gameObject.tag == "Hull")
+            RectTransformUtility.ScreenPointToWorldPointInRectangle((RectTransform)canvas.transform, child.transform.position, canvas.worldCamera, out Vector3 pos);
+            if (child.gameObject.tag == "Hull")
             {
-                myGameObject = Instantiate(Resources.Load(@"Prefabs\Hull\" + child.gameObject.name.Substring(0, child.gameObject.name.Length - 7), typeof(GameObject)), child.transform.localPosition + player.transform.position, Quaternion.identity) as GameObject;
-                myGameObject.transform.SetParent(player.transform);
+                myGameObject = Instantiate(Resources.Load(@"Prefabs\Hull\" + child.gameObject.name.Substring(0, child.gameObject.name.Length - 7), typeof(GameObject)), pos, child.transform.rotation) as GameObject;
             }
             else
             {
-                myGameObject = Instantiate(Resources.Load(@"Prefabs\Weapons\Player\" + child.gameObject.name.Substring(0, child.gameObject.name.Length - 7), typeof(GameObject)), child.transform.localPosition + player.transform.position, Quaternion.identity) as GameObject;
-                myGameObject.transform.SetParent(player.transform);
+                myGameObject = Instantiate(Resources.Load(@"Prefabs\Weapons\Player\" + child.gameObject.name.Substring(0, child.gameObject.name.Length - 7), typeof(GameObject)), pos, Quaternion.identity) as GameObject;
             }
-            Camera.main.ScreenToViewportPoint(myGameObject.transform.position);
-        }
+            myGameObject.transform.localScale = child.transform.localScale;
+            myGameObject.transform.SetParent(player.transform);
+        }        
     }
 }

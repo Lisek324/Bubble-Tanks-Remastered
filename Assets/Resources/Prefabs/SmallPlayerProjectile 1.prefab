@@ -137,6 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 40
-  damage: 1
+  damage: 50
   bullet: {fileID: 7284704584074707047}
   scale: {x: 0, y: 0}

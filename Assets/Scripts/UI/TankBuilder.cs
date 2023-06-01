@@ -6,14 +6,14 @@ using UnityEngine;
 public class TankBuilder : MonoBehaviour
 {
 
-    //public PlayerController playerController;
+    public PlayerController playerController;
     public static bool isInEditMode = false;
     public GameObject tankBuilderUI;
     float temp;
     private void Start()
     {
         tankBuilderUI.SetActive(false);
-        //temp = playerController.acceleration;
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     void Update()
@@ -21,7 +21,13 @@ public class TankBuilder : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (!isInEditMode) EditMode();
-            else Save();
+            else 
+            {
+                Save();
+                Time.timeScale = 1.0f;
+                playerController.SetHealth();
+            }
+                
         }
     }
     public void Save()
@@ -33,6 +39,7 @@ public class TankBuilder : MonoBehaviour
     }
     public void EditMode()
     {
+        Time.timeScale = 0.0f;
         //playerController.acceleration = 0;
         isInEditMode = true;
         tankBuilderUI.SetActive(true);
