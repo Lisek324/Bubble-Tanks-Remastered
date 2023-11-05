@@ -16,17 +16,12 @@ public class ArenaController : MonoBehaviour
 
     Vector3 tempJumpPoint;
 
-    private GameManager gameManager;
     int index = 0;
 
     public bool enemiesSpawned = false;
     public bool isArenaCleared = false;
     private bool inJumpState = false;
 
-    private void Start()
-    {
-        gameManager = GameObject.Find("MainCamera").GetComponent<GameManager>();
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -50,29 +45,29 @@ public class ArenaController : MonoBehaviour
             if (enemiesSpawned == false)
             {
                 ///8 is maximum number of enemies in arena
-                while (gameManager.gameDifficulty < gameManager.gameDifficultyTreshold && EnemyCounter(transform) < 8)
+                while (GameManager.gameManager.gameDifficulty < GameManager.gameManager.gameDifficultyTreshold && EnemyCounter(transform) < 8)
                 {
                     int i = 0;
-                    int random = Random.Range(0, gameManager.enemyList.Count);
-                    var enemyThreat = gameManager.enemyList[random].GetComponent<Enemy>().threat;
+                    int random = Random.Range(0, GameManager.gameManager.enemyList.Count);
+                    var enemyThreat = GameManager.gameManager.enemyList[random].GetComponent<Enemy>().threat;
                     index = random;
-                    while (enemyThreat + gameManager.gameDifficulty > gameManager.gameDifficultyTreshold)
+                    while (enemyThreat + GameManager.gameManager.gameDifficulty > GameManager.gameManager.gameDifficultyTreshold)
                     {
                         index = random - i;
 
-                        enemyThreat = gameManager.enemyList[index].GetComponent<Enemy>().threat;
+                        enemyThreat = GameManager.gameManager.enemyList[index].GetComponent<Enemy>().threat;
                         i += 1;
                         if (index == 0)
                         {
                             break;
                         }
                     }
-                    gameManager.gameDifficulty += enemyThreat;
+                    GameManager.gameManager.gameDifficulty += enemyThreat;
                     //TODO: add some random values to spawn enemies
-                    var e = Instantiate(gameManager.enemyList[index].gameObject, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                    var e = Instantiate(GameManager.gameManager.enemyList[index].gameObject, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                     e.transform.parent = gameObject.transform;
                 }
-                gameManager.gameDifficulty = 0;
+                GameManager.gameManager.gameDifficulty = 0;
                 index = 0;
                 enemiesSpawned = true;
             }
@@ -91,7 +86,7 @@ public class ArenaController : MonoBehaviour
             PlayerController.player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             PlayerController.playerController.enabled = false;
             playerPos = collision.transform.position;
-
+            
             inJumpState = true;
             tempJumpPoint = GetClosestJumpPoint().transform.position;
             ///reactivate jumpPoints after leaving arena
@@ -137,7 +132,7 @@ public class ArenaController : MonoBehaviour
                 }
             }
             //TODO: better formula for game difficulty is needed
-            gameManager.gameDifficultyTreshold += 1;
+            GameManager.gameManager.gameDifficultyTreshold += 1;
         }
 
         if (isArenaCleared == true)

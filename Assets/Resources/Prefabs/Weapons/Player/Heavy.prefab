@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5404747624972262167}
   - component: {fileID: 5404747624972262164}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7890951816636496616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletOffset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,8 +171,8 @@ GameObject:
   - component: {fileID: 8354993390190956618}
   - component: {fileID: 8227102439214579844}
   - component: {fileID: 5601740522545883121}
-  - component: {fileID: 832427325794421636}
-  m_Layer: 0
+  - component: {fileID: 3182996767989999056}
+  m_Layer: 7
   m_Name: Heavy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &832427325794421636
+--- !u!114 &3182996767989999056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,12 +300,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7890951817982430106}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09a6775e428bf254085a7bd3dd0fab18, type: 3}
+  m_Script: {fileID: 11500000, guid: d53e632eea74bbb42ad4e3f6064a2979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partName: 
-  cost: 0
-  fireRate: 1.5
+  fireRate: 0.5
   launchOffset: {fileID: 7890951816636496616}
-  projectilePrefab: {fileID: 7053964440816201119, guid: 61db474699f959649916a9df60356f65, type: 3}
-  shootSound: {fileID: 0}
+  projectilePrefab: {fileID: 2774739128908134246, guid: 6f32fbfdf7288d944b3cccde0be03b99, type: 3}
+  shootSound: {fileID: 5404747624972262164}

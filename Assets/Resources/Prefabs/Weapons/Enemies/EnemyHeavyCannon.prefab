@@ -272,11 +272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a6775e428bf254085a7bd3dd0fab18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partName: 
-  cost: 0
   fireRate: 1.5
   launchOffset: {fileID: 7605249226243094759}
-  projectilePrefab: {fileID: 7053964440816201119, guid: 61db474699f959649916a9df60356f65, type: 3}
+  projectilePrefab: {fileID: 3966184006575007959, guid: 61db474699f959649916a9df60356f65, type: 3}
   shootSound: {fileID: 0}
 --- !u!1 &7605249226243094760
 GameObject:

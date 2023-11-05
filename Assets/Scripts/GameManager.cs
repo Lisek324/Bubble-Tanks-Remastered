@@ -8,9 +8,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] public List<GameObject> enemyList;
     public int gameDifficultyTreshold = 1;
     public int gameDifficulty = 0;
-    private void Start()
-    { 
+    public static GameManager gameManager;
+    public int bubbles = 0;
+    private void Awake()
+    {
+        gameManager = this;
         Application.targetFrameRate = 144;
     }
-    
+
 }

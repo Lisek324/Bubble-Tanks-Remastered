@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class WeaponClass : PartHandler
+public class WeaponClass : MonoBehaviour
 {
     [Header("Weapon variables")]
     [SerializeField] protected float fireRate;
@@ -12,15 +12,15 @@ public class WeaponClass : PartHandler
     [SerializeField] private Transform launchOffset;
     [SerializeField] private ProjectileClass projectilePrefab;
     [SerializeField] private AudioSource shootSound;
-    private Transform target;
+    private Transform player;
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
     protected virtual void EnemyRotateGun()
     {
-        Vector2 direction = target.position - transform.position;
+        Vector2 direction = player.position - transform.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
@@ -29,7 +29,7 @@ public class WeaponClass : PartHandler
     protected void InstantiateProjectile()
     {
         Instantiate(projectilePrefab, launchOffset.position, transform.rotation);
-        if(shootSound != null)
+        if(shootSound != null && !shootSound.isPlaying)
         {
             shootSound.Play();
         }
@@ -53,7 +53,6 @@ public class WeaponClass : PartHandler
         }
         else if (Input.GetButtonUp("Fire1"))
         {
-            
             CancelInvoke("InstantiateProjectile");
         }
         return nextFire;

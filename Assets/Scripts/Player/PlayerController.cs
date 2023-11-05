@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class PlayerController : EntityClass
 {
+    public UnityEvent<Vector2> OnMoveBody = new UnityEvent<Vector2>();
+    public UnityEvent<Vector2> OnRotationTurret = new UnityEvent<Vector2>();
+
     public int currentHealth;
     public int maxHealth;
+
+    public bool isBig = true;
 
     public static PlayerController playerController;
     [SerializeField] private TextMeshProUGUI healthText;
 
     [Header("Collectible Variables")]
     public AudioSource collectSound;
-    public static int bubbles = 0;
+    
     [SerializeField] private TextMeshProUGUI scoreText;
     BubbleCollectForce bubbleCollect;
 
@@ -25,6 +31,7 @@ public class PlayerController : EntityClass
     [SerializeField] public float maxSpeed;
     [SerializeField] public float acceleration;
     [SerializeField] public float linearDrag;
+    [SerializeField] public float rotationSpeed;
     private float horizontalDirection;
     private float verticalDirection;
     private bool changingDirectionX => (rb.velocity.x > 0f && horizontalDirection < 0f || (rb.velocity.x < 0f && horizontalDirection > 0));
@@ -37,8 +44,8 @@ public class PlayerController : EntityClass
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerController = player.GetComponent<PlayerController>();
+        player = gameObject;
+        playerController = this;
         SetHealth();
     }
     private void FixedUpdate()
@@ -46,7 +53,6 @@ public class PlayerController : EntityClass
         MoveCharacter();
         ApplyLinearDrag();
         Rotation();
-        
     }
     private static Vector2 GetInput()
     {
@@ -54,14 +60,22 @@ public class PlayerController : EntityClass
     }
     private void MoveCharacter()
     {
-        rb.AddForce(new Vector2(horizontalDirection, verticalDirection) * acceleration);
-        if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+        if (isBig)
         {
-            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+            rb.velocity = (Vector2)transform.up * maxSpeed * Time.fixedDeltaTime;
+            rb.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, rotationSpeed * Time.fixedDeltaTime));
         }
-        if (Mathf.Abs(rb.velocity.y) > maxSpeed)
+        else
         {
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Sign(rb.velocity.y) * maxSpeed);
+            rb.AddForce(new Vector2(horizontalDirection, verticalDirection) * acceleration);
+            if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+            {
+                rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+            }
+            if (Mathf.Abs(rb.velocity.y) > maxSpeed)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Sign(rb.velocity.y) * maxSpeed);
+            }
         }
     }
     private void ApplyLinearDrag()
@@ -78,30 +92,38 @@ public class PlayerController : EntityClass
 
     private void Rotation()
     {
-        Vector2 directoin = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        float angle = Mathf.Atan2(directoin.y, directoin.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, maxSpeed * Time.deltaTime);
+        if (isBig)
+        {
+            Vector2 directoin = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            float angle = Mathf.Atan2(directoin.y, directoin.x) * Mathf.Rad2Deg;
+        }
+        else
+        {
+            Vector2 directoin = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            float angle = Mathf.Atan2(directoin.y, directoin.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, maxSpeed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("CollectBubble"))
         {
-            bubbleCollect = collision.gameObject.GetComponent<BubbleCollectForce>();
+            bubbleCollect = collision.GetComponent<BubbleCollectForce>();
             Destroy(collision.gameObject);
             if (maxHealth == currentHealth)
             {
-                bubbles += bubbleCollect.worth;
+                GameManager.gameManager.bubbles+= bubbleCollect.worth;
                 bubbleCollect.worth = 0;
             }
             else
             {
-                currentHealth+=bubbleCollect.worth;
+                currentHealth+= bubbleCollect.worth;
                 bubbleCollect.worth = 0;
             }
             collectSound.Play();
-            scoreText.text = "Bubbles: " + bubbles;
+            scoreText.text = "Bubbles: " + GameManager.gameManager.bubbles;
             healthText.text = "Health: " + currentHealth;
         }
     }

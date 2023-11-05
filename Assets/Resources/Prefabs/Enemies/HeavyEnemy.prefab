@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 516382688403603704}
   - component: {fileID: 379337561760543139}
   - component: {fileID: 5279286651108950887}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HeavyEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubbleLarge (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7578367057806114310, guid: 8d8ecb99a5ff92c44a2d88fb6409b8d8, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d8ecb99a5ff92c44a2d88fb6409b8d8, type: 3}
 --- !u!224 &4307270958899916020 stripped
@@ -235,6 +239,10 @@ PrefabInstance:
     - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Name
       value: BubbleSmall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7152549186426041846, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Pivot.x
@@ -346,6 +354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubbleSmall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7152549186426041846, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -452,9 +464,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 516382688403603707}
     m_Modifications:
+    - target: {fileID: 146477155078019707, guid: 4a916daede581ff488ecbebf4a8e1791, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 268764469523651074, guid: 4a916daede581ff488ecbebf4a8e1791, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151292576307620705, guid: 4a916daede581ff488ecbebf4a8e1791, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1469949269931073895, guid: 4a916daede581ff488ecbebf4a8e1791, type: 3}
       propertyPath: m_Name
       value: EnemyBasic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469949269931073895, guid: 4a916daede581ff488ecbebf4a8e1791, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8778110818057655943, guid: 4a916daede581ff488ecbebf4a8e1791, type: 3}
       propertyPath: m_RootOrder
@@ -529,6 +557,10 @@ PrefabInstance:
     - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Name
       value: BubbleSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7152549186426041846, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Pivot.x
@@ -640,6 +672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubbleSmall (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7152549186426041846, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -746,6 +782,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 516382688403603707}
     m_Modifications:
+    - target: {fileID: 5694953919697148185, guid: baca7e50a67629b4f95604f1e85dfc64, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5742765912754908739, guid: baca7e50a67629b4f95604f1e85dfc64, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -834,6 +874,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHeavyCannon
       objectReference: {fileID: 0}
+    - target: {fileID: 7605249224897137045, guid: baca7e50a67629b4f95604f1e85dfc64, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605249226243094760, guid: baca7e50a67629b4f95604f1e85dfc64, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baca7e50a67629b4f95604f1e85dfc64, type: 3}
 --- !u!224 &7322335867707565494 stripped
@@ -851,6 +899,10 @@ PrefabInstance:
     - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Name
       value: BubbleSmall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7152549186426041846, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Pivot.x
@@ -1046,6 +1098,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubbleLarge
       objectReference: {fileID: 0}
+    - target: {fileID: 7578367057806114310, guid: 8d8ecb99a5ff92c44a2d88fb6409b8d8, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7844208319428936820, guid: 8d8ecb99a5ff92c44a2d88fb6409b8d8, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -1067,6 +1123,10 @@ PrefabInstance:
     - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Name
       value: BubbleSmall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7152549186426041846, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Pivot.x

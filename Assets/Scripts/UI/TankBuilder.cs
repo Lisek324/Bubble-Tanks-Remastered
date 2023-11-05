@@ -5,15 +5,12 @@ using UnityEngine;
 
 public class TankBuilder : MonoBehaviour
 {
-
-    public PlayerController playerController;
     public static bool isInEditMode = false;
     public GameObject tankBuilderUI;
     float temp;
     private void Start()
     {
         tankBuilderUI.SetActive(false);
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     void Update()
@@ -25,7 +22,7 @@ public class TankBuilder : MonoBehaviour
             {
                 Save();
                 Time.timeScale = 1.0f;
-                playerController.SetHealth();
+                PlayerController.playerController.SetHealth();
             }
                 
         }

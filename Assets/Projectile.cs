@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerProjectileScript : ProjectileClass
+public class Projectile : ProjectileClass
 {
     public override void Start()
     {
-        base.Start();        
+        base.Start();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

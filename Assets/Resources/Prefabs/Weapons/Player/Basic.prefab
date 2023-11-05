@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 547196265}
   - component: {fileID: 547196266}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 29fdcc0c7f780a9428e8dc997039135c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 04157339ed9374748bad4b8b022f985f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -137,11 +137,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 52615210214865458}
-  - component: {fileID: 4792854645975898607}
   - component: {fileID: 4103733003867883060}
   - component: {fileID: 4119966002666837754}
   - component: {fileID: 485513579064471951}
-  m_Layer: 0
+  - component: {fileID: 1041681404906105432}
+  m_Layer: 7
   m_Name: Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,24 +170,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1.9, y: 1.28}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4792854645975898607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2775289990175186404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d53e632eea74bbb42ad4e3f6064a2979, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  partName: BasicWeapon
-  cost: 5
-  fireRate: 0.3
-  launchOffset: {fileID: 2775289990992718998}
-  projectilePrefab: {fileID: 2587444503966551340, guid: 71c3996061680024492fe387ec4cb5e9, type: 3}
-  shootSound: {fileID: 547196266}
 --- !u!222 &4103733003867883060
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -278,6 +260,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1041681404906105432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2775289990175186404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d53e632eea74bbb42ad4e3f6064a2979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.3
+  launchOffset: {fileID: 2775289990992718998}
+  projectilePrefab: {fileID: 8989272773702801862, guid: 71c3996061680024492fe387ec4cb5e9, type: 3}
+  shootSound: {fileID: 547196266}
 --- !u!1 &2775289990992719001
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2775289990992718998}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletOffset
   m_TagString: Untagged
   m_Icon: {fileID: 0}

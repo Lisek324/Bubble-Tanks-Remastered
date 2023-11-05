@@ -292,6 +292,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 1
   launchOffset: {fileID: 7186015376182435106}
-  projectilePrefab: {fileID: 4034141892357022401, guid: 920e46e870dd0e344bb84476c6af4628, type: 3}
+  projectilePrefab: {fileID: 4280686191656521227, guid: 920e46e870dd0e344bb84476c6af4628, type: 3}
   shootSound: {fileID: 0}
-  target: {fileID: 4061020574486037340, guid: f10783aa64b40d44dbf80ba4e2523def, type: 3}

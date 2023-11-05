@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1887762233923096266}
   - component: {fileID: -7468217850669023343}
   - component: {fileID: 6078709215752916309}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -124,6 +124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubbleMedium
       objectReference: {fileID: 0}
+    - target: {fileID: 7100599544961533556, guid: 12156b4d4118f0549a8b023d57c0ceac, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7738250421566200220, guid: 12156b4d4118f0549a8b023d57c0ceac, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -230,6 +234,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubbleSmall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7152549186426041846, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -332,6 +340,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubbleMedium (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7100599544961533556, guid: 12156b4d4118f0549a8b023d57c0ceac, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7738250421566200220, guid: 12156b4d4118f0549a8b023d57c0ceac, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -430,9 +442,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1887762233923096265}
     m_Modifications:
+    - target: {fileID: 146477155078019707, guid: 4a916daede581ff488ecbebf4a8e1791, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 268764469523651074, guid: 4a916daede581ff488ecbebf4a8e1791, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151292576307620705, guid: 4a916daede581ff488ecbebf4a8e1791, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1469949269931073895, guid: 4a916daede581ff488ecbebf4a8e1791, type: 3}
       propertyPath: m_Name
       value: EnemyBasic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469949269931073895, guid: 4a916daede581ff488ecbebf4a8e1791, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8778110818057655943, guid: 4a916daede581ff488ecbebf4a8e1791, type: 3}
       propertyPath: m_RootOrder
@@ -507,6 +535,10 @@ PrefabInstance:
     - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Name
       value: BubbleSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7152549186426041846, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Pivot.x
@@ -614,6 +646,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubbleSmall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7152549186426041846, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -715,6 +751,10 @@ PrefabInstance:
     - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Name
       value: BubbleSmall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186592408928786645, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7152549186426041846, guid: 5c57ca97a439f98419bf169d60c8202e, type: 3}
       propertyPath: m_Pivot.x
@@ -901,6 +941,10 @@ PrefabInstance:
     - target: {fileID: 7578367057806114310, guid: 8d8ecb99a5ff92c44a2d88fb6409b8d8, type: 3}
       propertyPath: m_Name
       value: BubbleLarge
+      objectReference: {fileID: 0}
+    - target: {fileID: 7578367057806114310, guid: 8d8ecb99a5ff92c44a2d88fb6409b8d8, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d8ecb99a5ff92c44a2d88fb6409b8d8, type: 3}

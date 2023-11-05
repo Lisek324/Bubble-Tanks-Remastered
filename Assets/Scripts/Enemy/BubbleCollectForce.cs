@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class BubbleCollectForce : MonoBehaviour
 {
-    private Rigidbody2D rib;
-    public float dropForce = 5f;
+    private Rigidbody2D rig;
+    public float dropForce = 10f;
     public int worth = 0;
+    public static BubbleCollectForce bubbleCollectForce;
 
     void Start()
     {
-        rib = GetComponent<Rigidbody2D>();
-        rib.AddForce(new Vector2((float)Random.Range(-dropForce, dropForce), (float)Random.Range(-dropForce, dropForce)), ForceMode2D.Impulse);
+        bubbleCollectForce = this;
+        rig = GetComponent<Rigidbody2D>();
+        rig.AddForce(new Vector2((float)Random.Range(-dropForce, dropForce), (float)Random.Range(-dropForce, dropForce)), ForceMode2D.Impulse);
     }
 }

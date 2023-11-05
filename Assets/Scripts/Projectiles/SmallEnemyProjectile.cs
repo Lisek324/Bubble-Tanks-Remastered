@@ -7,7 +7,6 @@ public class SmallEnemyProjectile : ProjectileClass
     public override void Start()
     {
         base.Start();
-        IgnoreEnemyCollision();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {    

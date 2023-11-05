@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5093554344829807951}
   - component: {fileID: 7217633746027613264}
   - component: {fileID: 4552309962057152015}
-  - component: {fileID: 4034141892357022401}
-  m_Layer: 0
+  - component: {fileID: 4280686191656521227}
+  m_Layer: 8
   m_Name: SmallEnemyProjectile
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
---- !u!114 &4034141892357022401
+--- !u!114 &4280686191656521227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,9 +133,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1803374573418154363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e0b9fb78a47cb142be35959f7a93381, type: 3}
+  m_Script: {fileID: 11500000, guid: 64ad6d46038fe2d46a4b17f0e9ab8abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 40
   damage: 1
   bullet: {fileID: 7217633746027613264}
+  scale: {x: 0, y: 0}

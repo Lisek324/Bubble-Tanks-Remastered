@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5186592408928786645
+--- !u!1 &7100599544961533556
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7152549186426041846}
-  - component: {fileID: 6472359054690020635}
-  - component: {fileID: 2893230115431367679}
-  - component: {fileID: 4410282765957749097}
-  - component: {fileID: 4497812780071064302}
+  - component: {fileID: 7738250421566200220}
+  - component: {fileID: 3538225757655393765}
+  - component: {fileID: 5240856121383926658}
+  - component: {fileID: 7987874459114096796}
+  - component: {fileID: 8214287425126333722}
   m_Layer: 0
-  m_Name: BubbleSmall
+  m_Name: MediumBubble
   m_TagString: Hull
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &7152549186426041846
+--- !u!224 &7738250421566200220
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5186592408928786645}
+  m_GameObject: {fileID: 7100599544961533556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -38,15 +38,15 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.64, y: 0.64}
+  m_SizeDelta: {x: 1.28, y: 1.28}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!212 &6472359054690020635
+--- !u!212 &3538225757655393765
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5186592408928786645}
+  m_GameObject: {fileID: 7100599544961533556}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: -1981415707
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e6348924292eda4598a6cf00a0cbd37, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4887e6ed995d5964287bdeb0bfa61f9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,13 +92,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2893230115431367679
+--- !u!58 &5240856121383926658
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5186592408928786645}
+  m_GameObject: {fileID: 7100599544961533556}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -107,29 +107,27 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.32
---- !u!114 &4410282765957749097
+  m_Radius: 0.64
+--- !u!114 &7987874459114096796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5186592408928786645}
+  m_GameObject: {fileID: 7100599544961533556}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 780670a16a0db454fa95b1265e054df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partName: BubbleSmall
-  cost: 1
-  partHealth: 1
---- !u!223 &4497812780071064302
+  partHealth: 2
+--- !u!223 &8214287425126333722
 Canvas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5186592408928786645}
+  m_GameObject: {fileID: 7100599544961533556}
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
