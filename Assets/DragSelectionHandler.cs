@@ -62,7 +62,6 @@ public class DragSelectionHandler : MonoBehaviour, IBeginDragHandler, IDragHandl
             {
                 selectable.OnSelect(eventData);
             }*/
-            //TODO: multidragging stops working due to exception MissingReferenceException: The object of type 'Dragger' has been destroyed but you are still trying to access it.
             if (RectTransformUtility.RectangleContainsScreenPoint((RectTransform)selectionBoxImage.transform, selectable.transform.position))
             {
                 selectable.OnSelect(eventData);

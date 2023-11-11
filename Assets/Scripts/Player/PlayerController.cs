@@ -6,8 +6,7 @@ using UnityEngine.Events;
 
 public class PlayerController : EntityClass
 {
-    public UnityEvent<Vector2> OnMoveBody = new UnityEvent<Vector2>();
-    public UnityEvent<Vector2> OnRotationTurret = new UnityEvent<Vector2>();
+    public GameObject turret;
 
     public int currentHealth;
     public int maxHealth;
@@ -26,7 +25,7 @@ public class PlayerController : EntityClass
     [Header("Player Components")]
     public static GameObject player;
     [SerializeField] public Rigidbody2D rb;
-
+    public Vector2 movementVector;
     [Header("Movement Variables")]
     [SerializeField] public float maxSpeed;
     [SerializeField] public float acceleration;
@@ -47,6 +46,10 @@ public class PlayerController : EntityClass
         player = gameObject;
         playerController = this;
         SetHealth();
+        //TODO: make an list/array of weapons to be rotatable, and remove everything from this list while rebuilding and add new components/weapons
+        //SIDENOTE: A "weapon" tag can be missleading...i should change it to 'rotatable';
+        turret = GameObject.FindGameObjectWithTag("Weapon");
+        
     }
     private void FixedUpdate()
     {
@@ -60,10 +63,20 @@ public class PlayerController : EntityClass
     }
     private void MoveCharacter()
     {
+        //TODO:reset players rotation before changing to bigger tank
+        //FIX:player will be positioned to default params after rebuilding in tank editor (probably...i need to implement alternative steering after getting higher tank class before i can delete this comment)
         if (isBig)
         {
-            rb.velocity = (Vector2)transform.up * maxSpeed * Time.fixedDeltaTime;
-            rb.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, rotationSpeed * Time.fixedDeltaTime));
+            movementVector = GetInput();
+            if (movementVector!=Vector2.zero)
+            {
+                float angle = Mathf.Atan2(movementVector.y, movementVector.x) * Mathf.Rad2Deg;
+                var targetRotation = new Vector3(0, 0, angle);
+                var lookTo = Quaternion.Euler(targetRotation);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookTo, rotationSpeed * Time.deltaTime);
+            }
+            rb.AddForce(new Vector2(horizontalDirection, verticalDirection) * acceleration);
+
         }
         else
         {
@@ -94,8 +107,8 @@ public class PlayerController : EntityClass
     {
         if (isBig)
         {
-            Vector2 directoin = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            float angle = Mathf.Atan2(directoin.y, directoin.x) * Mathf.Rad2Deg;
+            /*Vector2 directoin = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            turret.transform.rotation = Quaternion.RotateTowards(turret.transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2(directoin.y, directoin.x) * Mathf.Rad2Deg),99);///5 is turret rotation speed*/
         }
         else
         {

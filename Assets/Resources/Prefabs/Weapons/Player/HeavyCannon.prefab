@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 5601740522545883121}
   - component: {fileID: 3182996767989999056}
   m_Layer: 7
-  m_Name: Heavy
+  m_Name: HeavyCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

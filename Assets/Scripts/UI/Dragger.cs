@@ -156,7 +156,7 @@ public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitialize
                 if (temp_max_y > max_y)
                     max_y = temp_max_y;
 
-                GameManager.gameManager.bubbles -= Part.part.partCost;
+                //GameManager.gameManager.bubbles -= Part.part.partCost;
             }
             builder.GetComponent<RectTransform>().sizeDelta = new Vector2(max_x - min_x, max_y - min_y);
         }
@@ -167,7 +167,9 @@ public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitialize
         }
         bubbles.text = "Bubbels: " + GameManager.gameManager.bubbles.ToString();
 
-        currentlySelected.Add(cursor.GetComponent<Dragger>());
+        //currentlySelected.Add(cursor.GetComponent<Dragger>());
+    
+        //redundant?
         cursor.transform.GetChild(0).gameObject.SetActive(true);
         //cursor.GetComponent<Image>().color = selectedColor;
         dragmultiple = false;
@@ -188,6 +190,7 @@ public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitialize
             {
                 cursor = Instantiate(gameObject, transform);
                 cursor.transform.SetParent(builder);
+                
                 if (xMirror)
                 {
                     //cursor2 = Instantiate(gameObject, transform);
@@ -212,13 +215,17 @@ public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitialize
         }
         cursor.transform.SetAsLastSibling();
         // cursor2.transform.SetAsLastSibling();
+        //cursor.transform.GetChild(0).gameObject.SetActive(true);
+        
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         if (!RectTransformUtility.RectangleContainsScreenPoint((RectTransform)partInventory.transform, cursor.transform.position))
         {
+            Debug.Log("object ahs benn destroysded");
             DeselectAll(eventData);
+            currentlySelected.Clear();
             Destroy(cursor);
             GameManager.gameManager.bubbles += Part.part.partCost;
                 foreach(Transform child in container)

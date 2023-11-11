@@ -13,6 +13,7 @@ TagManager:
   - JumpPoint
   - Hull
   - Bullet
+  - Weapon
   layers:
   - Default
   - TransparentFX

@@ -11,7 +11,6 @@ public class ProjectileClass : MonoBehaviour
     
     public virtual void Start()
     {
-        //TODO:UnassignedReferenceException: The variable bullet of Projectile has not been assigned.
         bullet.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
     }
 
