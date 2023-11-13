@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shooter : WeaponClass
 {
+
     void Update()
     {
         PlayerShooting();
@@ -13,4 +14,5 @@ public class Shooter : WeaponClass
     {
         return base.PlayerShooting();
     }
+
 }

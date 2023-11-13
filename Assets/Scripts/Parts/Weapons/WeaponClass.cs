@@ -7,20 +7,13 @@ public class WeaponClass : MonoBehaviour
 {
     [Header("Weapon variables")]
     [SerializeField] protected float fireRate;
-
     protected float nextFire = 0f;
     [SerializeField] private Transform launchOffset;
     [SerializeField] private ProjectileClass projectilePrefab;
     [SerializeField] private AudioSource shootSound;
-    private Transform player;
-
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-    }
     protected virtual void EnemyRotateGun()
     {
-        Vector2 direction = player.position - transform.position;
+        Vector2 direction = PlayerController.player.transform.position - transform.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
@@ -29,12 +22,20 @@ public class WeaponClass : MonoBehaviour
     protected void InstantiateProjectile()
     {
         Instantiate(projectilePrefab, launchOffset.position, transform.rotation);
-        if(shootSound != null && !shootSound.isPlaying)
+        if (shootSound != null)
         {
-            shootSound.Play();
+            for (int i = 0; i < AudioSoundManager.sManager.audioSources.Count; i++)
+            {
+
+                if (AudioSoundManager.sManager.audioSources[i].clip == shootSound.clip && !shootSound.isPlaying)
+                {
+                    AudioSoundManager.sManager.audioSources[i].Play();
+                }
+
+
+            }
         }
     }
-
     protected virtual void EnemyShooting()
     {
         if (Time.time > nextFire)

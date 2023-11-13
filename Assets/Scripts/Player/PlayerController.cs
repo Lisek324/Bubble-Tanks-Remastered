@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class PlayerController : EntityClass
 {
-    public GameObject turret;
+    public List<GameObject> turrets;
 
     public int currentHealth;
     public int maxHealth;
@@ -47,9 +47,7 @@ public class PlayerController : EntityClass
         playerController = this;
         SetHealth();
         //TODO: make an list/array of weapons to be rotatable, and remove everything from this list while rebuilding and add new components/weapons
-        //SIDENOTE: A "weapon" tag can be missleading...i should change it to 'rotatable';
-        turret = GameObject.FindGameObjectWithTag("Weapon");
-        
+        //SIDENOTE: A "weapon" tag can be missleading...i should change it to 'rotatable';        
     }
     private void FixedUpdate()
     {
@@ -65,6 +63,7 @@ public class PlayerController : EntityClass
     {
         //TODO:reset players rotation before changing to bigger tank
         //FIX:player will be positioned to default params after rebuilding in tank editor (probably...i need to implement alternative steering after getting higher tank class before i can delete this comment)
+        //SIDENOTE: adding new script for movement would benefit game performance thus i should inherit these movement scripts for enemies in one class
         if (isBig)
         {
             movementVector = GetInput();
@@ -107,8 +106,13 @@ public class PlayerController : EntityClass
     {
         if (isBig)
         {
-            /*Vector2 directoin = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            turret.transform.rotation = Quaternion.RotateTowards(turret.transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2(directoin.y, directoin.x) * Mathf.Rad2Deg),99);///5 is turret rotation speed*/
+            Vector2 direction;
+            foreach (GameObject turret in turrets)
+            {
+                //Camera.main is resource heavy?
+                direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - turret.transform.position;
+                turret.transform.rotation = Quaternion.RotateTowards(turret.transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg), 99);///5 is turret rotation speed*/
+            }
         }
         else
         {
