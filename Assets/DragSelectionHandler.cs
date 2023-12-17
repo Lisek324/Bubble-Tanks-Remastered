@@ -58,10 +58,6 @@ public class DragSelectionHandler : MonoBehaviour, IBeginDragHandler, IDragHandl
         selectionBoxImage.gameObject.SetActive(false);
         foreach (Dragger selectable in Dragger.allSelectable)
         {
-            /*if (selectionRect.Contains(Camera.main.WorldToScreenPoint(selectable.transform.localPosition)))
-            {
-                selectable.OnSelect(eventData);
-            }*/
             if (RectTransformUtility.RectangleContainsScreenPoint((RectTransform)selectionBoxImage.transform, selectable.transform.position))
             {
                 selectable.OnSelect(eventData);

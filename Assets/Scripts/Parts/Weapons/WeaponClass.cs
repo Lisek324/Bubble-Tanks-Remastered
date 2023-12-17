@@ -26,13 +26,10 @@ public class WeaponClass : MonoBehaviour
         {
             for (int i = 0; i < AudioSoundManager.sManager.audioSources.Count; i++)
             {
-
                 if (AudioSoundManager.sManager.audioSources[i].clip == shootSound.clip && !shootSound.isPlaying)
                 {
                     AudioSoundManager.sManager.audioSources[i].Play();
                 }
-
-
             }
         }
     }

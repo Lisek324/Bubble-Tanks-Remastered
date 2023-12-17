@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class PlayerController : EntityClass
 {
     public List<GameObject> turrets;
-
+    [Header("Player Stats")]
     public int currentHealth;
     public int maxHealth;
 

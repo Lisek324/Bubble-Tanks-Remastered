@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Shooter : WeaponClass
 {
-
     void Update()
     {
         PlayerShooting();

@@ -1,0 +1,224 @@
+{
+    "Items": [
+        {
+            "name": "LargeBubble",
+            "xPos": -65.3719482421875,
+            "yPos": 46.98406982421875,
+            "rWidth": 85.33999633789063,
+            "rHeigth": 85.33999633789063,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 8
+        },
+        {
+            "name": "LargeBubble",
+            "xPos": -71.1219482421875,
+            "yPos": -47.01593017578125,
+            "rWidth": 85.33999633789063,
+            "rHeigth": 85.33999633789063,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 8
+        },
+        {
+            "name": "MediumBubble",
+            "xPos": -102.4969482421875,
+            "yPos": 82.98406982421875,
+            "rWidth": 42.66999816894531,
+            "rHeigth": 42.66999816894531,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 6
+        },
+        {
+            "name": "SmallBubble",
+            "xPos": -33.9969482421875,
+            "yPos": 73.67156982421875,
+            "rWidth": 21.34000015258789,
+            "rHeigth": 21.34000015258789,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 4
+        },
+        {
+            "name": "SmallBubble",
+            "xPos": -29.3719482421875,
+            "yPos": -69.07843017578125,
+            "rWidth": 21.34000015258789,
+            "rHeigth": 21.34000015258789,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 4
+        },
+        {
+            "name": "HugeBubble",
+            "xPos": 37.8780517578125,
+            "yPos": 67.92156982421875,
+            "rWidth": 128.0,
+            "rHeigth": 128.0,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 12
+        },
+        {
+            "name": "HugeBubble",
+            "xPos": 32.1280517578125,
+            "yPos": -59.82843017578125,
+            "rWidth": 128.0,
+            "rHeigth": 128.0,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 12
+        },
+        {
+            "name": "HugeBubble",
+            "xPos": 96.0030517578125,
+            "yPos": 0.0,
+            "rWidth": 128.0,
+            "rHeigth": 128.0,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 12
+        },
+        {
+            "name": "LargeBubble",
+            "xPos": -168.7469482421875,
+            "yPos": 0.0,
+            "rWidth": 85.33999633789063,
+            "rHeigth": 85.33999633789063,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 8
+        },
+        {
+            "name": "HugeBubble",
+            "xPos": -112.9969482421875,
+            "yPos": 0.0,
+            "rWidth": 128.0,
+            "rHeigth": 128.0,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 12
+        },
+        {
+            "name": "HugeBubble",
+            "xPos": 0.0,
+            "yPos": 0.0,
+            "rWidth": 128.0,
+            "rHeigth": 128.0,
+            "xScale": 1.25,
+            "yScale": 1.25,
+            "cost": 12
+        },
+        {
+            "name": "SmallBubble",
+            "xPos": -198.8719482421875,
+            "yPos": -29.64093017578125,
+            "rWidth": 21.34000015258789,
+            "rHeigth": 21.34000015258789,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 4
+        },
+        {
+            "name": "MediumBubble",
+            "xPos": 0.0,
+            "yPos": 116.67156982421875,
+            "rWidth": 42.66999816894531,
+            "rHeigth": 42.66999816894531,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 6
+        },
+        {
+            "name": "MediumBubble",
+            "xPos": 0.0,
+            "yPos": -114.32843017578125,
+            "rWidth": 42.66999816894531,
+            "rHeigth": 42.66999816894531,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 6
+        },
+        {
+            "name": "MediumBubble",
+            "xPos": -72.3719482421875,
+            "yPos": 0.0,
+            "rWidth": 42.66999816894531,
+            "rHeigth": 42.66999816894531,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 6
+        },
+        {
+            "name": "SmallBubble",
+            "xPos": -23.6219482421875,
+            "yPos": 120.10906982421875,
+            "rWidth": 21.34000015258789,
+            "rHeigth": 21.34000015258789,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 4
+        },
+        {
+            "name": "SmallBubble",
+            "xPos": -22.3719482421875,
+            "yPos": -117.82843017578125,
+            "rWidth": 21.34000015258789,
+            "rHeigth": 21.34000015258789,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 4
+        },
+        {
+            "name": "SmallBubble",
+            "xPos": -125.7469482421875,
+            "yPos": 82.98406982421875,
+            "rWidth": 21.34000015258789,
+            "rHeigth": 21.34000015258789,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 4
+        },
+        {
+            "name": "MediumBubble",
+            "xPos": -111.8719482421875,
+            "yPos": -80.70343017578125,
+            "rWidth": 42.66999816894531,
+            "rHeigth": 42.66999816894531,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 6
+        },
+        {
+            "name": "SmallBubble",
+            "xPos": -136.2469482421875,
+            "yPos": -80.70343017578125,
+            "rWidth": 21.34000015258789,
+            "rHeigth": 21.34000015258789,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 4
+        },
+        {
+            "name": "SmallBubble",
+            "xPos": -216.2469482421875,
+            "yPos": 0.0,
+            "rWidth": 21.34000015258789,
+            "rHeigth": 21.34000015258789,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 4
+        },
+        {
+            "name": "SmallBubble",
+            "xPos": -201.2469482421875,
+            "yPos": 33.04656982421875,
+            "rWidth": 21.34000015258789,
+            "rHeigth": 21.34000015258789,
+            "xScale": 1.0,
+            "yScale": 1.0,
+            "cost": 4
+        }
+    ]
+}

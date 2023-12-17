@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    //TODO fix these numbers
     public float movementSpeed = 50f;
     public float rotationSpeed = 1000f;
 
