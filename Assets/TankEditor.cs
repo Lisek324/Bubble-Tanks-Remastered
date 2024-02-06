@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 public class TankEditor : MonoBehaviour
 {
     public static List<PartData> objectsInEditor = new List<PartData>();
@@ -12,17 +13,24 @@ public class TankEditor : MonoBehaviour
     private RectTransform container;
     public Canvas canvas;
     private GameManager gameManager;
+    private PlayerController playerController;
     MessageBox msg;
     Action action;
     int i = 0;
-
+    public static float gridSize = 6f;
+    public static TankEditor tankEditor;
     const int PLAYER_LAYER = 7;
-    private void Start()
-    {
+    Dragger dragger;
+    
+private void Start()
+    { 
+        tankEditor = this;
+        playerController = PlayerController.playerController;
         gameManager = GameManager.gameManager;
         jsonSaving = JSONSaving.jsonSaving;
         point = Dragger.builder;
         container = Dragger.container;
+        dragger = Dragger.dragger;
     }
     public void JSONSave()
     {
@@ -57,13 +65,13 @@ public class TankEditor : MonoBehaviour
     }
     public void Save()
     {
-        PlayerController.playerController.turrets.Clear();
-        PlayerController.player.transform.rotation = Quaternion.identity;
-        foreach (Transform child in PlayerController.player.transform)
+        playerController.turrets.Clear();
+        playerController.player.transform.rotation = Quaternion.identity;
+        foreach (Transform child in playerController.player.transform)
         {
             Destroy(child.gameObject);
         }
-
+        i = 0;
         foreach (Transform child in point)
         {
             RectTransformUtility.ScreenPointToWorldPointInRectangle((RectTransform)canvas.transform, child.transform.position, canvas.worldCamera, out Vector3 pos);
@@ -75,19 +83,31 @@ public class TankEditor : MonoBehaviour
             {
                 myGameObject = Instantiate(Resources.Load(@"Prefabs\Weapons\Player\" + child.gameObject.name, typeof(GameObject)), pos, child.transform.rotation) as GameObject;
                 //SIDENOTE: get weapons by their tag please
-                PlayerController.playerController.turrets.Add(myGameObject);
+                playerController.turrets.Add(myGameObject);
             }
             myGameObject.transform.localScale = child.transform.localScale;
-            myGameObject.transform.SetParent(PlayerController.player.transform);
+            myGameObject.transform.SetParent(playerController.player.transform);
             myGameObject.GetComponent<SpriteRenderer>().sortingOrder = i;
             myGameObject.layer = PLAYER_LAYER;
             i++;
         }
-        i = 0;   
+        playerController.GetComponent<Rigidbody2D>().mass = PlayerController.totalMass;
+        playerController.currentClass(Dragger.tankClass);
+        Debug.Log("Actual tank Class: " + Dragger.tankClass);
+        /*if (PlayerController.totalMass < 1)
+        { 
+            playerController.currentClass(TankClass.Light);
+            //tankClassText.text = "Tank Class: Light";
+        }
+        else if(PlayerController.totalMass > 1)
+        {
+            playerController.currentClass(TankClass.Medium);
+            //tankClassText.text = "Tank Class: Medium";
+        }*/
     }
     public void Load()
     {
-        
+
         msg = UIManager.Instance.CreateMessageBox();
         action = () =>
         {
@@ -133,13 +153,15 @@ public class TankEditor : MonoBehaviour
 
                 gameManager.bubbles -= jsonSaving.loadedData[i].cost;
             }
-            gameManager.scoreText.text = "Bubbles: "+gameManager.bubbles.ToString();
+            gameManager.scoreText.text = "Bubbles: " + gameManager.bubbles.ToString();
         };
         msg.Init(UIManager.Instance.mainCanvas,
-        "Are you shure do you want to load tank design from JSON? This action will delete, and refund every part in editor",
+        "Are you shure do you want to load tank design from JSON? This action will delete, and refund every part currently in editor",
         "Yes",
         "No",
         action,
         true);
     }
+    
 }
+

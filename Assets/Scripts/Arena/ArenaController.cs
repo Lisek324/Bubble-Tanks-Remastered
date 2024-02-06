@@ -21,7 +21,11 @@ public class ArenaController : MonoBehaviour
     public bool enemiesSpawned = false;
     public bool isArenaCleared = false;
     private bool inJumpState = false;
-
+    public PlayerController playerController;
+    private void Start()
+    {
+        playerController = PlayerController.playerController;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -83,8 +87,8 @@ public class ArenaController : MonoBehaviour
         }
         if (collision.CompareTag("Player"))
         {
-            PlayerController.player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            PlayerController.playerController.enabled = false;
+            playerController.player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            playerController.enabled = false;
             playerPos = collision.transform.position;
             
             inJumpState = true;
@@ -112,12 +116,12 @@ public class ArenaController : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float percentageComplete = elapsedTime / 0.5f;
-            PlayerController.player.transform.position = Vector3.Lerp(playerPos, tempJumpPoint, Mathf.SmoothStep(0,1,percentageComplete));
-            if(PlayerController.player.transform.position == tempJumpPoint)
+            playerController.player.transform.position = Vector3.Lerp(playerPos, tempJumpPoint, Mathf.SmoothStep(0,1,percentageComplete));
+            if(playerController.player.transform.position == tempJumpPoint)
             {
                 inJumpState = false;
                 elapsedTime = 0;
-                PlayerController.playerController.enabled = true;
+                playerController.enabled = true;
             }
         }
         //this actualy makes my things go slower, and would be nice if gameDifficultyTreshold would just increase once after clearing an arena
@@ -141,7 +145,7 @@ public class ArenaController : MonoBehaviour
             {
                 if (bubblesToCollect[i] != null)
                 {
-                    bubblesToCollect[i].transform.position = Vector3.MoveTowards(bubblesToCollect[i].transform.position, PlayerController.player.transform.position, 0.05f);
+                    bubblesToCollect[i].transform.position = Vector3.MoveTowards(bubblesToCollect[i].transform.position, playerController.player.transform.position, 0.05f);
                 }
                 else
                 {
@@ -160,7 +164,7 @@ public class ArenaController : MonoBehaviour
             if (go.activeSelf)
             {
                 float currentDistance;
-                currentDistance = Vector3.Distance(PlayerController.player.transform.position, go.transform.position);
+                currentDistance = Vector3.Distance(playerController.player.transform.position, go.transform.position);
                 if (currentDistance < closestDistance)
                 {
                     closestDistance = currentDistance;

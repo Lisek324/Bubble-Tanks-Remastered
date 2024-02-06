@@ -51,7 +51,6 @@ public class JSONSaving : MonoBehaviour
     private void SetPath()
     {
         path = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
-        //where it should be saved after releasing a game???
         persistentPath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
     }
 

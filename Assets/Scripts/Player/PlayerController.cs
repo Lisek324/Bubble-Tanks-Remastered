@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
-
+public enum TankClass { Light, Medium, Heavy, Destroyer, MBT };
 public class PlayerController : EntityClass
 {
     public List<GameObject> turrets;
     [Header("Player Stats")]
     public int currentHealth;
     public int maxHealth;
-
+    public static float totalMass = 0;
+    
     public bool isBig = true;
-
     public static PlayerController playerController;
     [SerializeField] private TextMeshProUGUI healthText;
 
     [Header("Collectible Variables")]
     public AudioSource collectSound;
-    
+
     [SerializeField] private TextMeshProUGUI scoreText;
     BubbleCollectForce bubbleCollect;
 
     [Header("Player Components")]
-    public static GameObject player;
+    public GameObject player;
     [SerializeField] public Rigidbody2D rb;
     public Vector2 movementVector;
     [Header("Movement Variables")]
@@ -35,16 +35,45 @@ public class PlayerController : EntityClass
     private float verticalDirection;
     private bool changingDirectionX => (rb.velocity.x > 0f && horizontalDirection < 0f || (rb.velocity.x < 0f && horizontalDirection > 0));
     private bool changingDirectionY => (rb.velocity.y > 0f && verticalDirection < 0f || (rb.velocity.y < 0f && verticalDirection > 0));
+    public TankClass currentClass(TankClass c)
+    {
+        switch (c)
+        {
+            case TankClass.Light:
+                maxSpeed = 25;
+                acceleration = 20;
+                break;
+            case TankClass.Medium:
+                maxSpeed = 20;
+                acceleration = 25;
+                break;
+            case TankClass.Heavy:
+                maxSpeed = 15;
+                acceleration = 30;
+                break;
+            case TankClass.Destroyer:
+                maxSpeed = 10;
+                acceleration = 40;
+                break;
+            case TankClass.MBT:
+                maxSpeed = 5;
+                acceleration = 50;
+                break;
+        }
+        return c;
+    }
     void Update()
     {
         horizontalDirection = GetInput().x;
         verticalDirection = GetInput().y;
     }
-
+    private void Awake()
+    {
+        playerController = this;
+    }
     private void Start()
     {
         player = gameObject;
-        playerController = this;
         SetHealth();
         //TODO: make an list/array of weapons to be rotatable, and remove everything from this list while rebuilding and add new components/weapons
         //SIDENOTE: A "weapon" tag can be missleading...i should change it to 'rotatable';        

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Part : MonoBehaviour
 {
-    public int partCost;
+
     public static Part part;
+    public int partCost;
+    public float partMass;
     private void Awake()
     {
         part = this;

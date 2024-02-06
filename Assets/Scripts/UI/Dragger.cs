@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 using TMPro;
 public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitializePotentialDragHandler, IPointerDownHandler, ISelectHandler, IDeselectHandler, IPointerUpHandler, IPointerClickHandler
 {
+    [SerializeField] public TextMeshProUGUI massText;
+    [SerializeField] public TextMeshProUGUI tankClassText;
+    public static TankClass tankClass;
     public static HashSet<Dragger> allSelectable = new HashSet<Dragger>();
     public static HashSet<Dragger> currentlySelected = new HashSet<Dragger>();
     //add to this list ONLY obcjects that are correctly connected to themselfs;
@@ -15,8 +18,8 @@ public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitialize
     public bool xMirror = true;
     public bool isConnected = false;
     public bool isBase = false;
-    public float gridSize = 2f;
-    public float min_x, max_x, min_y, max_y;
+    
+    private float min_x, max_x, min_y, max_y;
     public GameObject cursor;
     public GameObject selectionBox;
     public GameObject partInventory;
@@ -29,20 +32,26 @@ public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitialize
     public static Canvas canvas;
     const int UI_HEIGHT = 1080;
     public static Vector2 size;
+    private float gridSize = 0f;
+    private TankEditor tankEditor;
+    public static Dragger dragger;
+    
     Color c;
     public void Start()
     {
+        dragger = this;
+        gridSize = TankEditor.gridSize;
+        tankEditor = TankEditor.tankEditor;
         gameManager = GameManager.gameManager;
-        canvas = GameObject.Find("HUD").GetComponent<Canvas>();
 
+        canvas = GameObject.Find("HUD").GetComponent<Canvas>();
         rotationSlider = GameObject.Find("RotationSlider").GetComponent<Slider>();
         scaleSlider = GameObject.Find("ScaleSlider").GetComponent<Slider>();
-
         builder = GameObject.Find("PlayerEdit").GetComponent<RectTransform>();
         container = GameObject.Find("Container").GetComponent<RectTransform>();
-
         partInventory = GameObject.Find("ConstructionZone");
-
+        massText = GameObject.Find("MassText").GetComponent<TextMeshProUGUI>();
+        tankClassText = GameObject.Find("ClassText").GetComponent<TextMeshProUGUI>();
 
         scaleSlider.onValueChanged.AddListener(delegate
         {
@@ -53,6 +62,7 @@ public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitialize
         {
             Rotate();
         });
+        //sprawdŸ czy rotation slider da siê przenieœæ do tankEditor Script. Dragger powinien zawieraæ te rzeczy, które powoduj¹ ruch i edycjê objektów po edytorze
     }
     
     public void OnPointerDown(PointerEventData eventData)
@@ -61,25 +71,26 @@ public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitialize
         {
             if (gameObject.transform.parent.name == "Background")
             {
-                cursor = Instantiate(gameObject, transform, false);
+                cursor = Instantiate(gameObject, transform);
                 cursor.name = cursor.name.Substring(0, cursor.name.Length - 7);
-                cursor.transform.SetParent(builder, false);
                 gameManager.bubbles -= cursor.GetComponent<Part>().partCost;
+                cursor.transform.SetParent(builder);
             }
             else
             {
                 cursor = gameObject;
                 rotationSlider.value = cursor.transform.eulerAngles.z / 360;
             }
+            
         }
-
+        //this is weird
         if (!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.RightControl))
         {
             DeselectAll(eventData);
         }
         else
         {
-            cursor.transform.SetParent(container);
+            //cursor.transform.SetParent(container);
         }
         c = cursor.GetComponent<Image>().color;
         cursor.transform.SetAsLastSibling();
@@ -112,7 +123,7 @@ public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitialize
 
     public void OnDrag(PointerEventData eventData)
     {
-        for (int j = 0; j < connectedParts.Count - 1; j++)
+        /*for (int j = 0; j < connectedParts.Count - 1; j++)
         {
             ///check if two images are overlaping
             if (cursor.GetComponent<RectTransform>().Overlaps(connectedParts[j].GetComponent<RectTransform>()))
@@ -154,7 +165,7 @@ public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitialize
                 c.a = 0.6f;
                 cursor.GetComponent<Image>().color = c;
             }
-        }
+        }*/
 
         if (currentlySelected.Count >= 2)
         {
@@ -193,25 +204,91 @@ public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitialize
             }
         }
     }
+    //I've just realized that OnPointerUp is invoked first than enddrag. With this information, i can make better code with it. maybe
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        ///If in Part inventory: destroy
+        if (!RectTransformUtility.RectangleContainsScreenPoint((RectTransform)partInventory.transform, cursor.transform.position))
+        {
+            DeselectAll(eventData);
+            currentlySelected.Clear();
+            Destroy(cursor);
+            
+            foreach (Transform child in container)
+            {
+                Destroy(child.gameObject);
+                allSelectable.Remove(child.GetComponent<Dragger>());
+                gameManager.bubbles += child.GetComponent<Part>().partCost;
+                PlayerController.totalMass -= child.GetComponent<Part>().partMass;
+            }
+            //This doesn't make sense but it works
+            if (container.childCount.Equals(0)) 
+            {
+                gameManager.bubbles += cursor.GetComponent<Part>().partCost;
+                allSelectable.Remove(cursor.GetComponent<Dragger>());
+                PlayerController.totalMass -= cursor.GetComponent<Part>().partMass;
+            } 
+        }
+        ///Remove tooltip
+        else
+        {
+            allSelectable.Add(cursor.GetComponent<Dragger>());
+            Destroy(cursor.GetComponent<TooltipTrigger>());
+            cursor.transform.GetChild(0).gameObject.SetActive(true);
+            currentlySelected.Add(cursor.GetComponent<Dragger>());
+        }
+        gameManager.scoreText.text = "Bubbles: " + gameManager.bubbles.ToString();
+        massText.text = "Total Mass: " + PlayerController.totalMass.ToString();
+        Debug.Log("TotalMass from OnPointerUp: " + PlayerController.totalMass);
+        CheckClass();
+    }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-
         while (container.childCount > 0)
         {
             container.GetChild(0).transform.SetParent(builder);
         }
-        if (RectTransformUtility.RectangleContainsScreenPoint((RectTransform)partInventory.transform, cursor.transform.position))
+        PlayerController.totalMass = 0;
+        foreach (Transform child in builder)
         {
-            Destroy(cursor.GetComponent<TooltipTrigger>());
+            PlayerController.totalMass += child.GetComponent<Part>().partMass;
         }
-        foreach (Transform selectables in builder)
-        {
-            allSelectable.Add(selectables.GetComponent<Dragger>());
-        }
-        
+
+        massText.text = "Total Mass: "+PlayerController.totalMass.ToString();
         dragmultiple = false;
         cursor.GetComponent<Image>().alphaHitTestMinimumThreshold = 0.5f;
+        Debug.Log("TotalMass from EndDrag: "+ PlayerController.totalMass);
+        CheckClass();
+    }
+
+    private void CheckClass()
+    {
+        if (PlayerController.totalMass < 0.6f)
+        {
+            tankClass = TankClass.Light;
+            tankClassText.text = "Tank Class: Light";
+        }
+        else if (PlayerController.totalMass < 1.2)
+        {
+            tankClass = TankClass.Medium;
+            tankClassText.text = "Tank Class: Medium";
+        }
+        else if (PlayerController.totalMass < 2)
+        {
+            tankClass = TankClass.Heavy;
+            tankClassText.text = "Tank Class: Heavy";
+        }
+        else if (PlayerController.totalMass < 3)
+        {
+            tankClass = TankClass.Destroyer;
+            tankClassText.text = "Tank Class: Destroyer";
+        }
+        else if (PlayerController.totalMass < 4)
+        {
+            tankClass = TankClass.MBT;
+            tankClassText.text = "Tank Class: MBT";
+        }
     }
 
     public void OnInitializePotentialDrag(PointerEventData eventData)
@@ -219,28 +296,7 @@ public class Dragger : MonoBehaviour, IDragHandler, IEndDragHandler, IInitialize
         eventData.useDragThreshold = false;
     }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        cursor.transform.GetChild(0).gameObject.SetActive(true);
-        currentlySelected.Add(cursor.GetComponent<Dragger>());
-        Debug.Log(currentlySelected.Count);
-        if (!RectTransformUtility.RectangleContainsScreenPoint((RectTransform)partInventory.transform, cursor.transform.position))
-        {
-            DeselectAll(eventData);
-            currentlySelected.Clear();
-            Destroy(cursor);
-            allSelectable.Remove(cursor.GetComponent<Dragger>());
-                foreach (Transform child in container)
-                {
-                    Destroy(child.gameObject);
-                    allSelectable.Remove(child.GetComponent<Dragger>());
-                    gameManager.bubbles += child.GetComponent<Part>().partCost;
-                }
-            if (container.childCount == 0) gameManager.bubbles += cursor.GetComponent<Part>().partCost;
-        }
-        gameManager.scoreText.text = "Bubbles: " + gameManager.bubbles.ToString();
-        //allSelectable.Clear();
-    }
+    
 
     public void OnSelect(BaseEventData eventData)
     {

@@ -13,7 +13,7 @@ public class WeaponClass : MonoBehaviour
     [SerializeField] private AudioSource shootSound;
     protected virtual void EnemyRotateGun()
     {
-        Vector2 direction = PlayerController.player.transform.position - transform.position;
+        Vector2 direction = PlayerController.playerController.player.transform.position - transform.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);

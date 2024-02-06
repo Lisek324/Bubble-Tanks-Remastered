@@ -7,8 +7,7 @@ using UnityEngine.EventSystems;
 
 public class DragSelectionHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-    [SerializeField]
-    Image selectionBoxImage;
+    [SerializeField]Image selectionBoxImage;
 
     Vector2 startPosition;
     Rect selectionRect;

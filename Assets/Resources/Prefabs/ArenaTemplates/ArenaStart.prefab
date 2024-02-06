@@ -92,17 +92,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d860f374eff16524caf30223f377b1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   jumpPoints:
   - {fileID: 2358640421283498130}
   - {fileID: 3631987202167134296}
   - {fileID: 8108709808053426675}
   - {fileID: 4020869289100958587}
-  numberOfEnemies: 0
-  isSpawned: 1
+  enemiesSpawned: 0
   isArenaCleared: 1
-  gameDifficultyTreshold: 1
-  gameDifficulty: 0
+  playerController: {fileID: 0}
+  player: {fileID: 0}
 --- !u!50 &1078556548511986133
 Rigidbody2D:
   serializedVersion: 4
